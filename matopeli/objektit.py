@@ -121,7 +121,6 @@ if __name__ == '__main__':
 
     mato = Mato(2)
 
-    ylos, alas, oikealle, vasemmalle = False, False, False, False
     kontrollitarkistin = Kontrollit()
 
     while kaynnissa:

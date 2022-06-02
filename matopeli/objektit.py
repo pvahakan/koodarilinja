@@ -50,25 +50,58 @@ class MatoObjekti(pygame.sprite.Sprite):
         self.x = x
         self.y = y
         self.image = pygame.Surface([self._sivu, self._sivu])
+        # pygame.draw.circle(self.image, self.color, (self.x, self.y), self._sivu / 2)
         pygame.draw.rect(self.image, 'gray', [0, 0, 10, 10])
         self.rect = self.image.get_rect()
         self.rect.centerx = self.x
         self.rect.centery = self.y
 
-        # pygame.draw.circle(self.image, self.color, (self.x, self.y), self._sivu / 2)
 
 class Kontrollit:
     def __init__(self):
-        self.kontrollit = {'alas' : False,
-                            'ylös' : False,
-                            'vasemmalle' : False,
-                            'oikealle' : False}
+        self.alusta_kontrollit()
 
     def alusta_kontrollit(self):
-        self.kontrollit = {'alas' : False,
-                            'ylös' : False,
-                            'vasemmalle' : False,
-                            'oikealle' : False}
+        self.kontrollit = {
+            'ylös' : False,
+            'alas' : False,
+            'vasemmalle' : False,
+            'oikealle' : False
+        }
+
+    def tarkista_nappain(self, tapahtuma):
+        '''
+        Tarkistaa, mitä nuolinäppäintä on painettu.
+        Muita näppäimiä ei tueta.
+
+        Palauttaa kontrollit sanakirjana. Sanakirja on
+        muotoa
+
+        kontrollit = {
+            'ylös' : Bool,
+            'alas' : Bool,
+            'vasemmalle' : Bool,
+            'oikealle' : Bool
+        }
+        '''
+        try:
+            if tapahtuma.type == pygame.KEYDOWN:
+                if tapahtuma.key == pygame.K_UP:
+                    self.alusta_kontrollit()
+                    self.kontrollit['ylös'] = True
+                elif tapahtuma.key == pygame.K_DOWN:
+                    self.alusta_kontrollit()
+                    self.kontrollit['alas'] = True
+                elif tapahtuma.key == pygame.K_LEFT:
+                    self.alusta_kontrollit()
+                    self.kontrollit['vasemmalle'] = True
+                elif tapahtuma.key == pygame.K_RIGHT:
+                    self.alusta_kontrollit()
+                    self.kontrollit['oikealle'] = True
+            return self.kontrollit
+        except AttributeError:
+            print('Virheellinen argumentti')
+            return None
 
 
 if __name__ == '__main__':
@@ -85,6 +118,7 @@ if __name__ == '__main__':
     mato = Mato(2)
 
     ylos, alas, oikealle, vasemmalle = False, False, False, False
+    kontrollitarkistin = Kontrollit()
 
     while kaynnissa:
         for tapahtuma in pygame.event.get():
@@ -92,30 +126,17 @@ if __name__ == '__main__':
                 kaynnissa = False
 
             # Tarkistetaan, mitä painetaan
-            # Tallennetaan tieto muuttujaan
-            if tapahtuma.type == pygame.KEYDOWN:
-                if tapahtuma.key == pygame.K_DOWN:
-                    ylos, vasemmalle, oikealle = False, False, False
-                    alas = True
-                elif tapahtuma.key == pygame.K_UP:
-                    alas, vasemmalle, oikealle = False, False, False
-                    ylos = True
-                elif tapahtuma.key == pygame.K_LEFT:
-                    alas, ylos, oikealle = False, False, False
-                    vasemmalle = True
-                elif tapahtuma.key == pygame.K_RIGHT:
-                    alas, vasemmalle, ylos = False, False, False
-                    oikealle = True
+            kontrollit = kontrollitarkistin.tarkista_nappain(tapahtuma)
 
         # Liikutetaan matoa niin kauan kunnes
         # painetaan jotakin muuta nappia
-        if alas:
+        if kontrollit['alas']:
             mato.liiku_alas()
-        elif ylos:
+        elif kontrollit['ylös']:
             mato.liiku_ylos()
-        elif vasemmalle:
+        elif kontrollit['vasemmalle']:
             mato.liiku_vasemmalle()
-        elif oikealle:
+        elif kontrollit['oikealle']:
             mato.liiku_oikealle()
 
         # Päivitetään pelilogiikka

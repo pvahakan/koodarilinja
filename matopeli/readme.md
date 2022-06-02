@@ -15,3 +15,9 @@ Tarkoitus on saada toimiva peli. Koodi tulee kirjoittaa sellaiseksi, että siin�
 - [ ] Peli päättyy, kun mato osuu itseensä
 
 ## Mitä opiskelijan halutaan tekevän?
+
+Peli voitaisiin toteuttaa useammassa vaiheessa. Vaiheet yhdistämällä saataisiin valmis pelattava peli.
+
+### Vaihe 1
+
+Luo ikkuna, johon peliä lähdetään rakentamaan.

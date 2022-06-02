@@ -39,9 +39,41 @@ while kaynnissa:
 
 ### Vaihe 2
 
-**Huom!** Tämä vaihe on aika laaja. Voisi jakaa kahtia, ensin piirretään madon pää näkyviin ja seuraavassa vaiheessa lisätään kontrollit. Kontrolleille voisi myös kehitellä oman luokan, jota olisi yksinkertaisempi käyttää.
+Tehtävänä on piirtää madon pää näkyviin edellisessä vaiheessa luotuun ikkunaan. Oletuksena madon pää piirretään kohtaan (200, 200). Päätä ei tarvitse vielä voida liikuttaa.
 
-Tehtävä on luoda mato, jota pystyy liikuttamaan nuolinäppäimillä edellisessä vaiheessa luodun ikkunan sisällä. Tässä vaiheessa riittää, että saa madon piirrettyä ja liikkumaan.
+```python
+    leveys = 800
+    korkeus = 600
+
+    kaynnissa = True
+
+    ikkuna = pygame.display.set_mode((leveys, korkeus))
+    pygame.display.set_caption('MATOPELI')
+
+    kello = pygame.time.Clock()
+
+    mato = Mato(2)
+
+    while kaynnissa:
+        for tapahtuma in pygame.event.get():
+            if tapahtuma.type == pygame.QUIT:
+                kaynnissa = False
+
+        # Päivitetään pelilogiikka
+        mato.paivita()
+
+        # Piirretään kaikki tarvittava
+        ikkuna.fill((0, 0, 0))
+        mato.piirra(ikkuna)
+
+        # Päivitetään PyGame:n ikkuna
+        pygame.display.flip()
+        kello.tick(60)
+```
+
+### Vaihe 3
+
+Seuraavaksi tehtävänä on saada mato liikkumaan. Kontrolleina käytetään nuolinäppäimiä.
 
 ```python
 leveys = 800
@@ -56,7 +88,6 @@ kello = pygame.time.Clock()
 
 mato = Mato(2)
 
-ylos, alas, oikealle, vasemmalle = False, False, False, False
 kontrollitarkistin = Kontrollit()
 
 while kaynnissa:

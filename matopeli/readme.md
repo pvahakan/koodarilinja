@@ -42,33 +42,33 @@ while kaynnissa:
 Tehtävänä on piirtää madon pää näkyviin edellisessä vaiheessa luotuun ikkunaan. Oletuksena madon pää piirretään kohtaan (200, 200). Päätä ei tarvitse vielä voida liikuttaa.
 
 ```python
-    leveys = 800
-    korkeus = 600
+leveys = 800
+korkeus = 600
 
-    kaynnissa = True
+kaynnissa = True
 
-    ikkuna = pygame.display.set_mode((leveys, korkeus))
-    pygame.display.set_caption('MATOPELI')
+ikkuna = pygame.display.set_mode((leveys, korkeus))
+pygame.display.set_caption('MATOPELI')
 
-    kello = pygame.time.Clock()
+kello = pygame.time.Clock()
 
-    mato = Mato(2)
+mato = Mato(2)
 
-    while kaynnissa:
-        for tapahtuma in pygame.event.get():
-            if tapahtuma.type == pygame.QUIT:
-                kaynnissa = False
+while kaynnissa:
+    for tapahtuma in pygame.event.get():
+        if tapahtuma.type == pygame.QUIT:
+            kaynnissa = False
 
-        # Päivitetään pelilogiikka
-        mato.paivita()
+    # Päivitetään pelilogiikka
+    mato.paivita()
 
-        # Piirretään kaikki tarvittava
-        ikkuna.fill((0, 0, 0))
-        mato.piirra(ikkuna)
+    # Piirretään kaikki tarvittava
+    ikkuna.fill((0, 0, 0))
+    mato.piirra(ikkuna)
 
-        # Päivitetään PyGame:n ikkuna
-        pygame.display.flip()
-        kello.tick(60)
+    # Päivitetään PyGame:n ikkuna
+    pygame.display.flip()
+    kello.tick(60)
 ```
 
 ### Vaihe 3

@@ -85,7 +85,7 @@ while kaynnissa:
     ikkuna.fill((0, 0, 0))
     mato.piirra(ikkuna)
 
-        # Päivitetään PyGame:n ikkuna
-        pygame.display.flip()
-        kello.tick(60)
+    # Päivitetään PyGame:n ikkuna
+    pygame.display.flip()
+    kello.tick(60)
 ```

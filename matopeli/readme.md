@@ -20,4 +20,19 @@ Peli voitaisiin toteuttaa useammassa vaiheessa. Vaiheet yhdistämällä saataisi
 
 ### Vaihe 1
 
-Luo ikkuna, johon peliä lähdetään rakentamaan.
+Luo tietyn kokoinen ikkuna, johon peliä lähdetään rakentamaan. Tee ikkunasta myös sellainen, että se pysyy näkyvissä ja sulkeutuu, kun hiirellä klikataan rastia.
+
+```python
+leveys = 800
+korkeus = 600
+
+kaynnissa = True
+
+ikkuna = pygame.display.set_mode((leveys, korkeus))
+pygame.display.set_caption('MATOPELI')
+
+while kaynnissa:
+    for tapahtuma in pygame.event.get():
+        if tapahtuma.type == pygame.QUIT:
+            kaynnissa = False
+```

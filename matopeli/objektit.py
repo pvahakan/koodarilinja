@@ -1,9 +1,6 @@
 import pygame
 
-class Ikkuna:
-    def __init__(self, leveys : int, korkeus : int):
-        self.leveys = leveys
-        self.korkeus = korkeus
+pygame.init()
 
 class Mato(pygame.sprite.Sprite):
     def __init__(self, nopeus : int):
@@ -20,6 +17,20 @@ class Mato(pygame.sprite.Sprite):
 
     def liiku_oikealle(self):
         pass
+
+if __name__ == '__main__':
+    leveys = 800
+    korkeus = 600
+
+    kaynnissa = True
+
+    ikkuna = pygame.display.set_mode((leveys, korkeus))
+    pygame.display.set_caption('MATOPELI')
+
+    while kaynnissa:
+        for tapahtuma in pygame.event.get():
+            if tapahtuma.type == pygame.QUIT:
+                kaynnissa = False
 
 # class Reuna(pygame.sprite.Sprite):
 #     def __init__(self, leveys : int, korkeus : int):

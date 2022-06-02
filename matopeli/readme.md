@@ -57,6 +57,7 @@ kello = pygame.time.Clock()
 mato = Mato(2)
 
 ylos, alas, oikealle, vasemmalle = False, False, False, False
+kontrollitarkistin = Kontrollit()
 
 while kaynnissa:
     for tapahtuma in pygame.event.get():
@@ -64,30 +65,17 @@ while kaynnissa:
             kaynnissa = False
 
         # Tarkistetaan, mitä painetaan
-        # Tallennetaan tieto muuttujaan
-        if tapahtuma.type == pygame.KEYDOWN:
-            if tapahtuma.key == pygame.K_DOWN:
-                ylos, vasemmalle, oikealle = False, False, False
-                alas = True
-            elif tapahtuma.key == pygame.K_UP:
-                alas, vasemmalle, oikealle = False, False, False
-                ylos = True
-            elif tapahtuma.key == pygame.K_LEFT:
-                alas, ylos, oikealle = False, False, False
-                vasemmalle = True
-            elif tapahtuma.key == pygame.K_RIGHT:
-                alas, vasemmalle, ylos = False, False, False
-                oikealle = True
+        kontrollit = kontrollitarkistin.tarkista_nappain(tapahtuma)
 
     # Liikutetaan matoa niin kauan kunnes
     # painetaan jotakin muuta nappia
-    if alas:
+    if kontrollit['alas']:
         mato.liiku_alas()
-    elif ylos:
+    elif kontrollit['ylös']:
         mato.liiku_ylos()
-    elif vasemmalle:
+    elif kontrollit['vasemmalle']:
         mato.liiku_vasemmalle()
-    elif oikealle:
+    elif kontrollit['oikealle']:
         mato.liiku_oikealle()
 
     # Päivitetään pelilogiikka
@@ -97,7 +85,7 @@ while kaynnissa:
     ikkuna.fill((0, 0, 0))
     mato.piirra(ikkuna)
 
-    # Päivitetään PyGame:n ikkuna
-    pygame.display.flip()
-    kello.tick(60)
+        # Päivitetään PyGame:n ikkuna
+        pygame.display.flip()
+        kello.tick(60)
 ```

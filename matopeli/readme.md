@@ -39,4 +39,65 @@ while kaynnissa:
 
 ### Vaihe 2
 
+**Huom!** Tämä vaihe on aika laaja. Voisi jakaa kahtia, ensin piirretään madon pää näkyviin ja seuraavassa vaiheessa lisätään kontrollit. Kontrolleille voisi myös kehitellä oman luokan, jota olisi yksinkertaisempi käyttää.
+
 Tehtävä on luoda mato, jota pystyy liikuttamaan nuolinäppäimillä edellisessä vaiheessa luodun ikkunan sisällä. Tässä vaiheessa riittää, että saa madon piirrettyä ja liikkumaan.
+
+```python
+leveys = 800
+korkeus = 600
+
+kaynnissa = True
+
+ikkuna = pygame.display.set_mode((leveys, korkeus))
+pygame.display.set_caption('MATOPELI')
+
+kello = pygame.time.Clock()
+
+mato = Mato(2)
+
+ylos, alas, oikealle, vasemmalle = False, False, False, False
+
+while kaynnissa:
+    for tapahtuma in pygame.event.get():
+        if tapahtuma.type == pygame.QUIT:
+            kaynnissa = False
+
+        # Tarkistetaan, mitä painetaan
+        # Tallennetaan tieto muuttujaan
+        if tapahtuma.type == pygame.KEYDOWN:
+            if tapahtuma.key == pygame.K_DOWN:
+                ylos, vasemmalle, oikealle = False, False, False
+                alas = True
+            elif tapahtuma.key == pygame.K_UP:
+                alas, vasemmalle, oikealle = False, False, False
+                ylos = True
+            elif tapahtuma.key == pygame.K_LEFT:
+                alas, ylos, oikealle = False, False, False
+                vasemmalle = True
+            elif tapahtuma.key == pygame.K_RIGHT:
+                alas, vasemmalle, ylos = False, False, False
+                oikealle = True
+
+    # Liikutetaan matoa niin kauan kunnes
+    # painetaan jotakin muuta nappia
+    if alas:
+        mato.liiku_alas()
+    elif ylos:
+        mato.liiku_ylos()
+    elif vasemmalle:
+        mato.liiku_vasemmalle()
+    elif oikealle:
+        mato.liiku_oikealle()
+
+    # Päivitetään pelilogiikka
+    mato.paivita()
+
+    # Piirretään kaikki tarvittava
+    ikkuna.fill((0, 0, 0))
+    mato.piirra(ikkuna)
+
+    # Päivitetään PyGame:n ikkuna
+    pygame.display.flip()
+    kello.tick(60)
+```

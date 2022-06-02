@@ -36,3 +36,7 @@ while kaynnissa:
         if tapahtuma.type == pygame.QUIT:
             kaynnissa = False
 ```
+
+### Vaihe 2
+
+Tehtävä on luoda mato, jota pystyy liikuttamaan nuolinäppäimillä edellisessä vaiheessa luodun ikkunan sisällä. Tässä vaiheessa riittää, että saa madon piirrettyä ja liikkumaan.

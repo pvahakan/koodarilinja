@@ -87,17 +87,21 @@ class Kontrollit:
         try:
             if tapahtuma.type == pygame.KEYDOWN:
                 if tapahtuma.key == pygame.K_UP:
-                    self.alusta_kontrollit()
-                    self.kontrollit['ylös'] = True
+                    if not self.kontrollit['alas']:
+                        self.alusta_kontrollit()
+                        self.kontrollit['ylös'] = True
                 elif tapahtuma.key == pygame.K_DOWN:
-                    self.alusta_kontrollit()
-                    self.kontrollit['alas'] = True
+                    if not self.kontrollit['ylös']:
+                        self.alusta_kontrollit()
+                        self.kontrollit['alas'] = True
                 elif tapahtuma.key == pygame.K_LEFT:
-                    self.alusta_kontrollit()
-                    self.kontrollit['vasemmalle'] = True
+                    if not self.kontrollit['oikealle']:
+                        self.alusta_kontrollit()
+                        self.kontrollit['vasemmalle'] = True
                 elif tapahtuma.key == pygame.K_RIGHT:
-                    self.alusta_kontrollit()
-                    self.kontrollit['oikealle'] = True
+                    if not self.kontrollit['vasemmalle']:
+                        self.alusta_kontrollit()
+                        self.kontrollit['oikealle'] = True
             return self.kontrollit
         except AttributeError:
             print('Virheellinen argumentti')

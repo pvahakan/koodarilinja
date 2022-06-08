@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 
@@ -6,6 +7,7 @@ class Mato(pygame.sprite.Sprite):
     def __init__(self, nopeus : int):
         super().__init__()
         self.nopeus = nopeus
+        self.pisteet = 0
 
         self.paa = pygame.sprite.GroupSingle()
         self.hanta = pygame.sprite.Group()
@@ -27,6 +29,9 @@ class Mato(pygame.sprite.Sprite):
     def liiku_oikealle(self):
         for paa in self.paa:
             paa.rect.x += self.nopeus
+
+    def lisaa_piste(self):
+        self.pisteet += self.nopeus
 
     def paivita(self):
         self.paa.update()
@@ -56,6 +61,30 @@ class MatoObjekti(pygame.sprite.Sprite):
         self.rect.centerx = self.x
         self.rect.centery = self.y
 
+class Ruoka(pygame.sprite.Sprite):
+    def __init__(self, ikkuna):
+        super().__init__()
+        self.ruoka = pygame.sprite.GroupSingle()
+
+        self.image = pygame.Surface([5, 5])
+        pygame.draw.rect(self.image, 'red', [0, 0, 5, 5])
+        self.rect = self.image.get_rect()
+
+        self.sijoita_ruoka(ikkuna)
+        self.ruoka.add(self)
+
+    def sijoita_ruoka(self, ikkuna):
+        lev, kork = ikkuna.get_size()
+        self.rect.x = random.randint(0, lev-5)
+        self.rect.y = random.randint(0, kork-5)
+
+    def on_syoty(self, mato):
+        for paa in mato.paa:
+            tulos = pygame.sprite.spritecollide(paa, self.ruoka, True)
+        return tulos
+
+    def piirra(self, ikkuna):
+        self.ruoka.draw(ikkuna)
 
 class Kontrollit:
     def __init__(self):
@@ -120,6 +149,7 @@ if __name__ == '__main__':
     kello = pygame.time.Clock()
 
     mato = Mato(2)
+    omena = Ruoka(ikkuna)
 
     kontrollitarkistin = Kontrollit()
 
@@ -144,10 +174,15 @@ if __name__ == '__main__':
 
         # Päivitetään pelilogiikka
         mato.paivita()
+        if omena.on_syoty(mato):
+            mato.lisaa_piste()
+            omena = Ruoka(ikkuna)
+            print(mato.pisteet)
 
         # Piirretään kaikki tarvittava
         ikkuna.fill((0, 0, 0))
         mato.piirra(ikkuna)
+        omena.piirra(ikkuna)
 
         # Päivitetään PyGame:n ikkuna
         pygame.display.flip()

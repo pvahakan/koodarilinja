@@ -120,3 +120,59 @@ while kaynnissa:
     pygame.display.flip()
     kello.tick(60)
 ```
+
+### Vaihe 4
+
+Seuraavassa vaiheessa lisätään peliin ruokaa sekä pistelasku. Tehtävänä on piirtää näytölle ruokaa ja tarkistaa, onko mato syönyt sen. Jos ruoka on syöty, tehdään lisää ruokaa ja madon pisteluku kasvaa. Madon ei tarvitse kasvaa vielä tässä vaiheessa.
+
+```python
+leveys = 800
+korkeus = 600
+
+kaynnissa = True
+
+ikkuna = pygame.display.set_mode((leveys, korkeus))
+pygame.display.set_caption('MATOPELI')
+
+kello = pygame.time.Clock()
+
+mato = Mato(2)
+omena = Ruoka(ikkuna)
+
+kontrollitarkistin = Kontrollit()
+
+while kaynnissa:
+    for tapahtuma in pygame.event.get():
+        if tapahtuma.type == pygame.QUIT:
+            kaynnissa = False
+
+        # Tarkistetaan, mitä painetaan
+        kontrollit = kontrollitarkistin.tarkista_nappain(tapahtuma)
+
+    # Liikutetaan matoa niin kauan kunnes
+    # painetaan jotakin muuta nappia
+    if kontrollit['alas']:
+        mato.liiku_alas()
+    elif kontrollit['ylös']:
+        mato.liiku_ylos()
+    elif kontrollit['vasemmalle']:
+        mato.liiku_vasemmalle()
+    elif kontrollit['oikealle']:
+        mato.liiku_oikealle()
+
+    # Päivitetään pelilogiikka
+    mato.paivita()
+    if omena.on_syoty(mato):
+        mato.lisaa_piste()
+        omena = Ruoka(ikkuna)
+        print(mato.pisteet)
+
+    # Piirretään kaikki tarvittava
+    ikkuna.fill((0, 0, 0))
+    mato.piirra(ikkuna)
+    omena.piirra(ikkuna)
+
+    # Päivitetään PyGame:n ikkuna
+    pygame.display.flip()
+    kello.tick(60)
+```

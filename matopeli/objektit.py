@@ -8,6 +8,7 @@ class Mato(pygame.sprite.Sprite):
         super().__init__()
         self.nopeus = nopeus
         self.pisteet = 0
+        self.ikkunan_koko = None
 
         self.paa = pygame.sprite.GroupSingle()
         self.hanta = pygame.sprite.Group()
@@ -39,6 +40,23 @@ class Mato(pygame.sprite.Sprite):
 
     def piirra(self, ikkuna):
         self.paa.draw(ikkuna)
+        if self.ikkunan_koko == None:
+            self.ikkunan_koko = ikkuna.get_size()
+
+    def tormaa_seinaan(self):
+        try:
+            for paa in self.paa:
+                if paa.rect.x < 0:
+                    return True
+                elif paa.rect.y < 0:
+                    return True
+                elif paa.rect.x >= self.ikkunan_koko[0] - 10:
+                    return True
+                elif paa.rect.y >= self.ikkunan_koko[1] - 10:
+                    return True
+            return False
+        except TypeError:
+            pass
 
 class MatoObjekti(pygame.sprite.Sprite):
     '''
@@ -178,6 +196,8 @@ if __name__ == '__main__':
             mato.lisaa_piste()
             omena = Ruoka(ikkuna)
             print(mato.pisteet)
+        if mato.tormaa_seinaan():
+            kaynnissa = False
 
         # Piirretään kaikki tarvittava
         ikkuna.fill((0, 0, 0))

@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 
@@ -6,6 +7,8 @@ class Mato(pygame.sprite.Sprite):
     def __init__(self, nopeus : int):
         super().__init__()
         self.nopeus = nopeus
+        self.pisteet = 0
+        self.ikkunan_koko = None
 
         self.paa = pygame.sprite.GroupSingle()
         self.hanta = pygame.sprite.Group()
@@ -28,12 +31,32 @@ class Mato(pygame.sprite.Sprite):
         for paa in self.paa:
             paa.rect.x += self.nopeus
 
+    def lisaa_piste(self):
+        self.pisteet += self.nopeus
+
     def paivita(self):
         self.paa.update()
         self.hanta.update()
 
     def piirra(self, ikkuna):
         self.paa.draw(ikkuna)
+        if self.ikkunan_koko == None:
+            self.ikkunan_koko = ikkuna.get_size()
+
+    def tormaa_seinaan(self):
+        try:
+            for paa in self.paa:
+                if paa.rect.x < 0:
+                    return True
+                elif paa.rect.y < 0:
+                    return True
+                elif paa.rect.x >= self.ikkunan_koko[0] - 10:
+                    return True
+                elif paa.rect.y >= self.ikkunan_koko[1] - 10:
+                    return True
+            return False
+        except TypeError:
+            pass
 
 class MatoObjekti(pygame.sprite.Sprite):
     '''
@@ -56,6 +79,30 @@ class MatoObjekti(pygame.sprite.Sprite):
         self.rect.centerx = self.x
         self.rect.centery = self.y
 
+class Ruoka(pygame.sprite.Sprite):
+    def __init__(self, ikkuna):
+        super().__init__()
+        self.ruoka = pygame.sprite.GroupSingle()
+
+        self.image = pygame.Surface([5, 5])
+        pygame.draw.rect(self.image, 'red', [0, 0, 5, 5])
+        self.rect = self.image.get_rect()
+
+        self.sijoita_ruoka(ikkuna)
+        self.ruoka.add(self)
+
+    def sijoita_ruoka(self, ikkuna):
+        lev, kork = ikkuna.get_size()
+        self.rect.x = random.randint(0, lev-5)
+        self.rect.y = random.randint(0, kork-5)
+
+    def on_syoty(self, mato):
+        for paa in mato.paa:
+            tulos = pygame.sprite.spritecollide(paa, self.ruoka, True)
+        return tulos
+
+    def piirra(self, ikkuna):
+        self.ruoka.draw(ikkuna)
 
 class Kontrollit:
     def __init__(self):
@@ -120,6 +167,7 @@ if __name__ == '__main__':
     kello = pygame.time.Clock()
 
     mato = Mato(2)
+    omena = Ruoka(ikkuna)
 
     kontrollitarkistin = Kontrollit()
 
@@ -144,10 +192,17 @@ if __name__ == '__main__':
 
         # Päivitetään pelilogiikka
         mato.paivita()
+        if omena.on_syoty(mato):
+            mato.lisaa_piste()
+            omena = Ruoka(ikkuna)
+            print(mato.pisteet)
+        if mato.tormaa_seinaan():
+            kaynnissa = False
 
         # Piirretään kaikki tarvittava
         ikkuna.fill((0, 0, 0))
         mato.piirra(ikkuna)
+        omena.piirra(ikkuna)
 
         # Päivitetään PyGame:n ikkuna
         pygame.display.flip()

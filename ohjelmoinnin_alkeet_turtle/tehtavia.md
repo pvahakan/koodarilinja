@@ -23,3 +23,19 @@ Jos tulostus näkyi, kaikki toimii kuten pitää ja voidaan jatkaa eteenpäin!
 # Tehtävä 1 - Neliön piirtäminen
 
 Ohjelmointi on käytännössä yksiselitteisten ohjeiden antamista tietokoneelle. Ohjeet annetaan jollakin ohjelmointikielellä.
+
+Tässä tehtävässä sinun tulee piirtää neliö. Neliön sivun pituus on 50. Käytä piirtämiseen Pythonin Turtle-kirjastoa.
+
+# Tehtävä 2 - Kaksi neliötä
+
+Tehtävänäsi on piirtää kaksi neliötä eri puolille piirtoikkunaa. 
+
+- Ensimmäinen neliö piirretään vasempaan yläreunaan ja sen sivun pituus on 60. 
+- Toinen neliö piirretään oikeaan alareunaaan ja sen sivun pituus on 20. 
+
+*Huom! Neliöiden ei tarvitse olla tarkalleen reunassa, riittää, että ne ovat oikealla suunnalla.*
+
+# Tehtävä 3 - Kuusikulmio
+
+a) Piirrä kuusikulmio.
+b) Väritä kuusikulmio punaiseksi.

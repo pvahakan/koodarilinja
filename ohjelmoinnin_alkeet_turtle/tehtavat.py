@@ -42,7 +42,17 @@ def tehtava_3(matka, kulma):
     kyna.end_fill()
     turtle.done()
 
+def tehtava_5(sivun_pituus, kulmien_maara):
+    kulma = (kulmien_maara - 2) * 180 / kulmien_maara
+    kulma = 180 - kulma # Piirrettävä kulma on ulkokulma
+    for i in range(kulmien_maara):
+        kyna.forward(sivun_pituus)
+        kyna.right(kulma)
+    turtle.done()
+
+
 if __name__ == '__main__':
     # tehtava_1(40)
     # tehtava_2()
-    tehtava_3(100, 60)
+    # tehtava_3(100, 60)
+    tehtava_5(50, 9)

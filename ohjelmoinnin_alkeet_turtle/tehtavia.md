@@ -43,7 +43,7 @@ b) Väritä kuusikulmio punaiseksi.
 
 Monikulmion yhden sisäkulman suuruus voidaan laskea seuraavasti: $$kulma = \frac{180 \cdot (n - 2)}{n}$$, missä $n$ on kulmien lukumäärä.
 
-Huom! Turtlessa käännöksessä käytettävä kulma on ulkokulma. Se saadaan laskettua $$ 180 - kulma $$.
+Huom! Turtlessa käännöksessä käytettävä kulma on ulkokulma. Se saadaan laskettua $$180 - kulma$$.
 
 # Tehtävä 4 - Ruotsin lippu
 

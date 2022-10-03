@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import turtle
+import math
 
 kyna = turtle.Turtle()
 kyna.speed(1)
@@ -50,9 +51,21 @@ def tehtava_5(sivun_pituus, kulmien_maara):
         kyna.right(kulma)
     turtle.done()
 
+def suorakulmainen_kolmio(a, b):
+    c = math.sqrt(a**2 + b**2)
+    kulma = 180 - math.atan2(a, b) * 180 / math.pi
+    print(c, kulma)
+    kyna.forward(a)
+    kyna.right(90)
+    kyna.forward(b)
+    kyna.right(kulma)
+    kyna.forward(c)
+    turtle.done()
+
 
 if __name__ == '__main__':
     # tehtava_1(40)
     # tehtava_2()
     # tehtava_3(100, 60)
-    tehtava_5(50, 9)
+    # tehtava_5(50, 9)
+    suorakulmainen_kolmio(60, 80)

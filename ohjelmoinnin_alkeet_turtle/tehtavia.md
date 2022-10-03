@@ -57,8 +57,18 @@ Muokkaa neliön piirtävää koodia siten, että neliön kokoa voi muuttaa tekem
 
 Piirrä ympyrä ja väritä se. Väri pitää kysyä käyttäjältä ohjelman suorituksen aluksi. Riittää, että ohjelma toimii käyttäjän syöttäessä Turtlen tunnistaman englanninkielisen värin, esim. "red".
 
-# Tehtävä 7 - Säännöllinen viisikulmio
+# Tehtävä 7 - Suorakulmainen kolmio
 
-Tee ohjelma, jolla voi piirtää säännöllisen viisikulmion. Tarvitset tehtävässä säännöllisen monikulmion kulmien suuruuksia. Etsi tarvittavat matemaattiset kaavat netistä ja hoida kulman suuruuden laskeminen Pythonilla!
+a) Tee ohjelma, joka piirtää suorakulmaisen kolmion. Ohjelman tulee kysyä käyttäjältä kateettien pituudet, jonka jälkeen ohjelma laskee hypotenuusan pituuden. Hypotenuusan pituuden saat Pythagoraan lauseen avulla seuraavasti:
 
-Huom! Kun piirrät Turtlella, käännöskulma on sama kuin säännöllisen monikulmion ulkokulma.
+$$c = \sqrt(a^2 + b^2)$$
+
+missä $a$ ja $b$ ovat kateettien pituudet. Pythonissa neliöjuuren voi laskea math-kirjaston funktiolla sqrt() ja potenssiinkorotus tehdään kahdella kertomerkillä **.
+
+Piirrä tehtävässä ensin kaksi kateettia. Terävään kulmaan tarvittavan käännöksen voit laskea seuraavasti:
+
+```python
+kulma = 180 - math.atan2(a, b) * 180 / math.pi
+```
+
+b) Muokkaa ohjelmaa siten, että se kysyy käyttäjältä millä värillä kolmio väritetään. Tulosta yhteenveto kuviosta (eli kateettien ja hypotenuusan pituudet sekä täyttöväri) ennen piirtämistä.

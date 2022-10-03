@@ -38,17 +38,22 @@ Tehtävänäsi on piirtää kaksi neliötä eri puolille piirtoikkunaa.
 # Tehtävä 3 - Kuusikulmio
 
 a) Piirrä kuusikulmio.
+
 b) Väritä kuusikulmio punaiseksi.
 
-# Tehtävä 4 - Muutettava neliö
+# Tehtävä 4 - Ruotsin lippu
+
+Piirrä ja väritä ruotsin lippu.
+
+# Tehtävä 5 - Muutettava neliö
 
 Muokkaa neliön piirtävää koodia siten, että neliön kokoa voi muuttaa tekemällä muutoksia ainoastaan yhdelle koodiriville.
 
-# Tehtävä 5 - Tietoa käyttäjältä
+# Tehtävä 6 - Tietoa käyttäjältä
 
 Piirrä ympyrä ja väritä se. Väri pitää kysyä käyttäjältä ohjelman suorituksen aluksi. Riittää, että ohjelma toimii käyttäjän syöttäessä Turtlen tunnistaman englanninkielisen värin, esim. "red".
 
-# Tehtävä 6 - Säännöllinen viisikulmio
+# Tehtävä 7 - Säännöllinen viisikulmio
 
 Tee ohjelma, jolla voi piirtää säännöllisen viisikulmion. Tarvitset tehtävässä säännöllisen monikulmion kulmien suuruuksia. Etsi tarvittavat matemaattiset kaavat netistä ja hoida kulman suuruuden laskeminen Pythonilla!
 

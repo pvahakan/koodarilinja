@@ -28,4 +28,6 @@ kyna.end_fill() # Lopettaa täyttövärjäyksen
 
 kyna.circle(30) # Piirtää ympyrän, jonka säde on 30
 
-turtle.exitonclick()
+# Lopetus
+turtle.done() # Linux
+turtle.exitonclick() # Windows

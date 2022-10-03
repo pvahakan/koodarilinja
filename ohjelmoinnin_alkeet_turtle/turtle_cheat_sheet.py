@@ -11,9 +11,8 @@ kyna.pensize(3) # Kynän paksuus: positiivinen luku
 # Liikkuminen
 
 kyna.forward(10) # Liikkuu eteenpäin 10 askelta
-kyna.left(90) # Kääntyy vasemmalle 90 astetta
-kyna.forward(10) # Liikkuu taakepäin 10 askelta
 kyna.left(90) # Kääntyy vastapäivään 90 astetta
+kyna.forward(10) # Liikkuu taakepäin 10 askelta
 kyna.right(90) # Kääntyy myötäpäivään 90 astetta
 kyna.goto(0, 0) # Siirtyy koordinaattipisteeseen (0, 0)
 

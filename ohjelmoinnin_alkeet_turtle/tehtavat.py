@@ -62,10 +62,29 @@ def suorakulmainen_kolmio(a, b):
     kyna.forward(c)
     turtle.done()
 
+def tehtava_8(sivu):
+    for i in range(4):
+        kyna.forward(sivu)
+        kyna.left(90)
+
+    print(f'Neliön pinta-ala on {sivu*sivu}')
+
+    sade = math.sqrt(sivu*sivu / math.pi)
+
+    print(f'Samankokoisen ympyrän säde on {sade}')
+
+    kyna.penup()
+    kyna.goto(-200, 0)
+    kyna.pendown()
+    kyna.circle(sade)
+    turtle.done()
+
 
 if __name__ == '__main__':
     # tehtava_1(40)
     # tehtava_2()
     # tehtava_3(100, 60)
     # tehtava_5(50, 9)
-    suorakulmainen_kolmio(60, 80)
+    # suorakulmainen_kolmio(60, 80)
+    # tehtava_8(12)
+    tehtava_8(100)

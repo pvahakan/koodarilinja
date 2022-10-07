@@ -72,3 +72,20 @@ kulma = 180 - math.atan2(a, b) * 180 / math.pi
 ```
 
 b) Muokkaa ohjelmaa siten, että se kysyy käyttäjältä millä värillä kolmio väritetään. Tulosta yhteenveto kuviosta (eli kateettien ja hypotenuusan pituudet sekä täyttöväri) ennen piirtämistä.
+
+
+# Tehtävä 8
+
+Piirrä jokin haluamasi kuvio. Ohjelman tulee kysyä käyttäjältä kynän piirtonopeus (kokonaisluku 0-9) ja piirrosnopeuden tulee muuttua käyttäjän syötteen mukaisesti.
+
+# Tehtävä 9
+
+a) Piirrä neliö. Neliön sivun pituus tulee olla muuttujassa.
+
+b) Laske neliön pinta-ala ja tulosta se näytölle.
+
+c) Laske sellaisen ympyrän säde, jonka pinta-ala on sama kuin neliön pinta-ala. Tulosta näytölle laskemasi ympyrän säde.
+
+d) Piirrä c-kohdassa saamasi ympyrä neliön kanssa samaan kuvaan. Varmista, että piirtäminen toimii, kun vaihdat neliön sivun pituutta muuttujassa.
+
+e) Muokkaa ohjelma siten, että neliön sivun pituus kysytään käyttäjältä ohjelman aluksi.

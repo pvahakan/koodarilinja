@@ -91,7 +91,7 @@ $$r = \sqrt(\frac{A}{\pi})$$
 Koodiin voit kirjoittaa sen tällä tavalla
 
 ```python
-sade = math.sqrt(pinta-ala / math.pi)
+sade = math.sqrt(pinta_ala / math.pi)
 ```
 
 d) Piirrä c-kohdassa saamasi ympyrä neliön kanssa samaan kuvaan. Varmista, että piirtäminen toimii, kun vaihdat neliön sivun pituutta muuttujassa.

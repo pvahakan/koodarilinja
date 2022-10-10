@@ -2,6 +2,7 @@
 
 import turtle
 import math
+import random
 
 kyna = turtle.Turtle()
 kyna.speed(1)
@@ -79,6 +80,60 @@ def tehtava_8(sivu):
     kyna.circle(sade)
     turtle.done()
 
+def testi():
+    varit = ['salmon', 'moccasin', 'maroon']
+    kyna.fillcolor(varit[0])
+    kyna.begin_fill()
+    for i in range(3):
+        kyna.forward(100)
+        kyna.left(120)
+    kyna.end_fill()
+
+    kyna.penup()
+    kyna.goto(-200, 0)
+    kyna.pendown()
+    kyna.fillcolor(varit[1])
+
+    kyna.begin_fill()
+    for i in range(3):
+        kyna.forward(100)
+        kyna.left(120)
+    kyna.end_fill()
+
+    kyna.penup()
+    kyna.goto(200, 0)
+    kyna.pendown()
+    kyna.fillcolor(varit[2])
+
+    kyna.begin_fill()
+    for i in range(3):
+        kyna.forward(100)
+        kyna.left(120)
+    kyna.end_fill()
+
+    turtle.done()
+
+def testi_2():
+    varit = ['dark khaki', 'pale green', 'sandy brown', 'crimson', 'orchid', 'dark magenta']
+    sivu = 10
+    kyna.pensize(5)
+    for vari in varit:
+        kyna.pencolor(vari)
+        kyna.forward(sivu)
+        kyna.right(90)
+        sivu = sivu * 1.5
+
+    turtle.done()
+
+def spiraali():
+    sivu = 10
+    for i in range(20):
+        kyna.forward(sivu)
+        kyna.left(40)
+        sivu = sivu + 10
+
+    turtle.done()
+
 
 if __name__ == '__main__':
     # tehtava_1(40)
@@ -87,4 +142,6 @@ if __name__ == '__main__':
     # tehtava_5(50, 9)
     # suorakulmainen_kolmio(60, 80)
     # tehtava_8(12)
-    tehtava_8(100)
+    # tehtava_8(100)
+    # testi_2()
+    spiraali()

@@ -28,12 +28,16 @@ kyna.end_fill() # Lopettaa täyttövärjäyksen
 # Ympyrä
 kyna.circle(30) # Piirtää ympyrän, jonka säde on 30
 
+# Lopetus
+turtle.done() # Linux
+turtle.exitonclick() # Windows
+```
+
+# Pythonin peruskomennot
+
+```python
 # Syötteen kysyminen ja tulostus
 muuttujan_nimi = input('Syötä halutun muuttujan arvo: ')
 kysytty_luku = int(input('Syötä luku: '))
 print(muuttujan_nimi) # Tulostaa muuttujan sisältämän arvon
-
-# Lopetus
-turtle.done() # Linux
-turtle.exitonclick() # Windows
 ```

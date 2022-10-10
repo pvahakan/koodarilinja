@@ -84,7 +84,15 @@ a) Piirrä neliö. Neliön sivun pituus tulee olla muuttujassa.
 
 b) Laske neliön pinta-ala ja tulosta se näytölle.
 
-c) Laske sellaisen ympyrän säde, jonka pinta-ala on sama kuin neliön pinta-ala. Tulosta näytölle laskemasi ympyrän säde.
+c) Laske sellaisen ympyrän säde, jonka pinta-ala on sama kuin neliön pinta-ala. Tulosta näytölle laskemasi ympyrän säde. Säde lasketaan pinta-alasta (A) seuraavasti:
+
+$$r = \sqrt(\frac{A}{\pi})$$
+
+Koodiin voit kirjoittaa sen tällä tavalla
+
+```python
+sade = math.sqrt(pinta-ala / math.pi)
+```
 
 d) Piirrä c-kohdassa saamasi ympyrä neliön kanssa samaan kuvaan. Varmista, että piirtäminen toimii, kun vaihdat neliön sivun pituutta muuttujassa.
 

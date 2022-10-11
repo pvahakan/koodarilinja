@@ -10,6 +10,12 @@ Piirrä säännöllinen kahdeksankulmio käyttäen for-silmukkaa. Voit laskea s�
 
 Muokkaa tehtävää 2 siten, että kulma, sivujen määrä sekä sivun pituus luetaan muuttujasta. **Ohjelman tulee laskea kulma sivujen määrän perusteella**. Ohjelma toimii oikein, jos muutat **ainoastaan sivujen määrää** ja saat piirrettyä minkä tahansa säännöllisen monikulmion.
 
+Monikulmion sisäkulman suuruus saadaan laskettua:
+
+$$kulma = \frac{180 \cdot (n-2)}{n}$$, missä $n$ on kulmien lukumäärä.
+
+Turtlessa tarvitaan kuitenkin ulkokulmaa, joka saadaan $180 - kulma$.
+
 # Tehtävä 4
 
 Muokkaa edellistä ohjelmaa siten, että sivujen määrä kysytään käyttäjältä. Ohjelman tulee piirtää säännöllinen monikulmio, jossa on käyttäjän syöttämä määrä sivuja.

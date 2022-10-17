@@ -134,6 +134,32 @@ def spiraali():
 
     turtle.done()
 
+def spiraali_2():
+    viivan_pituus = 10
+    kyna.speed(5)
+
+    while viivan_pituus < 500:
+        kyna.forward(viivan_pituus)
+        kyna.right(135)
+        viivan_pituus += 10
+
+    turtle.done()
+
+def lumisade():
+    maara = 0
+    kyna.speed(0)
+    kyna.hideturtle()
+    while maara < 50:
+        x = random.randint(-250, 250)
+        y = random.randint(-250, 250)
+        kyna.penup()
+        kyna.goto(x, y)
+        kyna.pendown()
+        kyna.circle(3)
+        maara += 1
+
+    turtle.done()
+
 
 if __name__ == '__main__':
     # tehtava_1(40)
@@ -144,4 +170,6 @@ if __name__ == '__main__':
     # tehtava_8(12)
     # tehtava_8(100)
     # testi_2()
-    spiraali()
+    # spiraali()
+    # spiraali_2()
+    lumisade()

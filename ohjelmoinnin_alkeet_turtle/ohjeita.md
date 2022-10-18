@@ -41,3 +41,23 @@ muuttujan_nimi = input('Syötä halutun muuttujan arvo: ')
 kysytty_luku = int(input('Syötä luku: '))
 print(muuttujan_nimi) # Tulostaa muuttujan sisältämän arvon
 ```
+
+## Toisto
+
+Pythonissa toisto voidaan tehdä usealla eri tavalla.
+
+for-silmukka ja range-funktio
+
+```python
+for i in range(20): # Muuttuja i saa 20 eri arvoa
+    print(i) # Tulostetaan muuttujan i arvo, huom 1. arvo on 0 ja viimeinen 19!
+```
+
+for-silmukka ja listat
+
+```python
+lista = ['auto', 'pyörä', 'mopo', 'potkulauta'] # Luodaan lista
+for alkio in lista: # Muuttuja alkio saa vuoron perään arvoksi listan jokaisen alkion arvon
+    print(alkio)
+
+```

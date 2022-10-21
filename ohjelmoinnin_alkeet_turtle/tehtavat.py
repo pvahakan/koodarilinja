@@ -160,6 +160,22 @@ def lumisade():
 
     turtle.done()
 
+def varikysely():
+    print('Tässä ohjelmassa voit halutessasi värittää ympyrän.')
+    print('K värittää ja E jättää ympyrän värittämättä.')
+    valinta = input('Valinta: ')
+    if valinta == 'K':
+        print('Valitse väri. Kirjoita väri pienellä ja englanniksi.')
+        vari = input('Kirjoita väri englanniksi: ')
+        kyna.fillcolor(vari)
+        kyna.begin_fill()
+        kyna.circle(40)
+        kyna.end_fill()
+    elif valinta == 'E':
+        kyna.circle(40)
+
+    turtle.done()
+
 
 if __name__ == '__main__':
     # tehtava_1(40)
@@ -172,4 +188,5 @@ if __name__ == '__main__':
     # testi_2()
     # spiraali()
     # spiraali_2()
-    lumisade()
+    # lumisade()
+    varikysely()

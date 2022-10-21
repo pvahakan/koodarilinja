@@ -40,8 +40,112 @@ piirra_ympyra(180, -50, 14) # Piirtää ympyrän, jonka säde on 14 pisteeseen (
 
 c) Piirrä satunnaisenkokoisia ympyröitä satunnaisiin paikkoihin eri puolille piirtoikkunaa. Ympyrän koko voi vaihdella välillä 1 - 15.
 
-# Tehtävä 3 - Lumihiutalefunktio
+# Tehtävä 3 - Väritysehto
 
-a) Edellisessä tehtävässä piirrettiin "lumihiutale" satunnaiseen paikkaan. Muodosta funktio ``piirra_lumihiutale(x, y)``, joka piirtää lumihiutaleen pisteeseen (x, y).
+a) Kysy käyttäjältä haluaako hän värittää ympyrän vai ei. Piirrä sen jälkeen ympyrä ja väritä se tai jätä värittämättä käyttäjän vastauksen perusteella.
 
-b) Muokkaa funktiota ``piirra_lumihiutale(x, y)`` siten, että kuvio näyttää hieman enemmän lumihiutaleelta.
+b) Muokkaa ohjelmaa siten, että käyttäjä voi valita millä värillä ympyrä väritetään. Valittavana voi olla muutama väri, esim. punainen, vihreä ja sininen. Luonnollisesti, jos käyttäjä ei halua värittää ympyrää, värejä ei myöskään kysytä.
+
+Esimerkki ohjelman suorituksesta. Kaikki kaksoispisteen jälkeiset tekstit ovat käyttäjän kirjoittamia. Molemmissa esimerkkisuorituksissa ohjelma piirtää ympyrän ja värittää sen annetulla värillä tai jättää värittämättä.
+
+```
+Tässä ohjelmassa voit halutessasi värittää ympyrän.
+K värittää ja E jättää ympyrän värittämättä.
+Valinta: K
+Valitse väri. Kirjoita väri pienellä ja englanniksi.
+Kirjoita väri englanniksi: green
+```
+
+```
+Tässä ohjelmassa voit halutessasi värittää ympyrän.
+K värittää ja E jättää ympyrän värittämättä.
+Valinta: E
+```
+
+# Tehtävä 5 - Suomenkieliset värit
+
+Kysy käyttäjältä väriä suomeksi. Piirrä sen jälkeen neliö ja väritä se käyttäjän syöttämällä värillä. Riittää, että ohjelma toimii kolmella värillä, esim. sininen, punainen ja vihreä. Jos käyttäjä kirjoittaa jonkin muun värin, ohjelma tulostaa tekstin "väriä ei tunnisteta". Kirjainten kokoa ei tarvitse huomioida, voit olettaa että käyttäjä käyttää pelkästään pieniä kirjaimia.
+
+# Tehtävä 6 - Yksinkertainen käyttöliittymä
+
+Toteuta yksinkertainen käyttöliittymä, jolla voit kysyä käyttäjältä miten hän haluaa kynää liikutettavan. Hyödynnetään tätä ohjelmaa myös myöhemmin. Tee kohdat vaihe-vaiheelta, niin saat sopivalla tavalla toimivan ohjelman.
+
+a) Luo funktio ``tulosta_ohjeet()``, joka kertoo käyttäjälle miten ohjelma toimii. Esimerkkitulostus funktion toiminnasta:
+
+```
+Miten haluat, että piirtoalueella liikutaan?
+Eteenpäin (1)
+Taaksepäin (2)
+Oikealle (3)
+Vasemmalle (4)
+Lopetus (5)
+```
+
+b) Kysy käyttäjältä valintaa niin kauan, kunnes hän syöttää luvun 5. Kun luku 5 syötetään, ohjelma tulostaa tekstin "Kiitos ja hei!" ja ohjelman suoritus päättyy. Esimerkkitulostus:
+
+```
+Miten haluat, että piirtoalueella liikutaan?
+Eteenpäin (1)
+Taaksepäin (2)
+Oikealle (3)
+Vasemmalle (4)
+Lopetus (5)
+Valintasi: 1
+Valintasi: 1
+Valintasi: 3
+Valintasi: 5
+Kiitos ja hei!
+```
+
+c) Huolehdi, että ainoastaan luvut 1-5 kelpaavat. Jos käyttäjä syöttää jonkin muun luvun, ohjelma tulostaa tekstin "Valinta ei kelpaa". Esimerkkitulostus:
+
+```
+Miten haluat, että piirtoalueella liikutaan?
+Eteenpäin (1)
+Taaksepäin (2)
+Oikealle (3)
+Vasemmalle (4)
+Lopetus (5)
+Valintasi: 1
+Valintasi: 4
+Valintasi: 1
+Valintasi: 9
+Valinta ei kelpaa
+Valintasi: 5
+Kiitos ja hei!
+```
+
+d) Tallenna käyttäjän syöttämät liikkeet listaan ja tulosta listan sisältö, kun käyttäjä lopettaa liikkeiden syöttämisen. Alla esimerkki, miten listaan voidaan lisätä alkioita.
+
+```python
+listan_nimi = [] # Luodaan tyhjä lista. Anna listalle sitä kuvaava nimi.
+listan_nimi.append(2) # Lisätään listan loppuun luku 2
+listan_nimi.append('ohjelmointi on kivaa') # Lisätään listan loppuun merkkijono "ohjelmointi on kivaa"
+print(listan_nimi) # Tulostetaan listan sisältö
+```
+
+Esimerkkitulostus lopullisesta ohjelmasta. Kaikki kaksoispisteen jälkeiset numerot ovat käyttäjän kirjoittamia.
+
+```
+Miten haluat, että piirtoalueella liikutaan?
+Eteenpäin (1)
+Taaksepäin (2)
+Oikealle (3)
+Vasemmalle (4)
+Lopetus (5)
+Valintasi: 1
+Valintasi: 1
+Valintasi: 3
+Valintasi: 2
+Valintasi: 2
+Valintasi: 4
+Valintasi: 1
+Valintasi: 9
+Valinta ei kelpaa
+Valintasi: 3
+Valintasi: 1
+Valintasi: 5
+Kiitos ja hei!
+Kynän liikkeet ovat:
+['eteenpäin', 'eteenpäin', 'oikealle', 'taaksepäin', 'taaksepäin', 'vasemmalle', 'eteenpäin', 'oikealle', 'eteenpäin']    
+```

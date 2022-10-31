@@ -149,3 +149,83 @@ Kiitos ja hei!
 Kynän liikkeet ovat:
 ['eteenpäin', 'eteenpäin', 'oikealle', 'taaksepäin', 'taaksepäin', 'vasemmalle', 'eteenpäin', 'oikealle', 'eteenpäin']    
 ```
+
+# Tehtävä 7 - Yksinkertaisia pinta-aloja
+
+a) Luo funktio ``laske_nelion_ala(sivu)``, joka ottaa argumentikseen neliön sivun pituuden ja palauttaa neliön pinta-alan. Esimerkki pääohjelmasta, jolla funktion tulee toimia.
+
+```python
+nelion_ala = laske_nelion_ala(20)
+print(nelion_ala) # Tulostaa 400
+```
+
+b) Luo funktio ``laske_kolmion_ala(kanta, korkeus)``, joka ottaa argumentikseen kolmion kannan ja korkeuden ja palauttaa vastaavan kolmion pinta-alan. Esimerkki pääohjelmasta:
+
+```python
+kolmion_ala = laske_kolmion_ala(10, 5)
+print(kolmion_ala) # Tulostaa 25
+```
+
+c) Luo funktio ``laske_ympyran_ala(sade)``, joka ottaa argumentikseen ympyrän säteen ja palauttaa vastaavan ympyrän pinta-alan. Tarvitset tässä piitä, saat sen esimerkiksi matikkakirjastosta komennolla ``math.pi`` Esimerkki pääohjelmasta:
+
+```python
+import math # Muista tämä alkuun!
+
+ympyran_sade = 28
+ympyran_ala = laske_ympyran_ala(ympyran_sade)
+print(ympyran_ala) # Tulostaa 2463.0086404143976
+```
+
+d) Lisätehtävä: luo yksinkertainen pinta-alalaskuri, joka kysyy käyttäjältä minkä kuvion pinta-alan hän haluaa laskea. Kuvion perusteella kysytään lisätietoja kuviosta ja lasketaan ja tulostetaan oikea vastaus.
+
+# Tehtävä 8 - Suorakulmainen kolmio
+
+Huom! Toteutus kolmion piirtämiselle on tehty ensimmäisen tehtäväpaketin tehtävässä 7. Tässä muokataan aiempaa toteutusta hieman toisenlaiseksi, voit katsoa mallia aiemmasta jos haluat.
+
+a) Luo funktio ``laske_hypotenuusa(a, b)``, joka ottaa argumenttina suorakulmaisen kolmion kateettien pituudet. Funktio laskee ja palauttaa suorakulmaisen kolmion hypotenuusan pituuden. Jos $a$ ja $b$ ovat kateetteja, hypotenuusa $$c = \sqrt(a^2 + b^2)$
+
+Neliöjuuren voit laskea matikkakirjaston avulla:
+
+```python
+import math # Muista ottaa kirjasto käyttöön!
+luku = 12
+neliojuuri = math.sqrt(luku) # Laskee luvun 12 neliöjuuren ja tallentaa tuloksen muuttujaan
+```
+
+b) Luo funktio ``laske_kulma(a, b)``, joka laskee ja palauttaa suorakulmaisen kolmion toisen terävän kulman ulkokulman suuruuden. Ulkokulmaa tarvitaan, kun piirretään kolmio seuraavassa kohdassa. Ulkokulman suuruus lasketaan
+$$\alpha = 180^\circ - \tan(a / b) \cdot 180 / \pi$$
+
+Kulman tangentin ja piin arvon voit määrittää myös matikkakirjaston avulla:
+
+```python
+import math
+tangentti = math.atan2(a, b) # Laskee tangentin luvulle a/b
+pii = math.pi # Piin likiarvo
+```
+
+c) Täydennä alla oleva ohjelma siten, että se piirtää suorakulmaisen kolmion käyttäjän syöttämien kateettien perusteella.
+
+```python
+import math
+import turtle
+
+a = int(input('Anna ensimmäinen kateetti: '))
+b = int(input('Anna toinen kateetti: '))
+
+c = laske_hypotenuusa(a, b)
+kulma = laske_kulma(a, b)
+
+# Toteuta piirtäminen tähän
+```
+
+d) Luo funktio ``piirra_kolmio(a, b)``. Edellisen kohdan piirto pitää onnistua alla olevalla pääohjelmalla.
+
+```python
+import math
+import turtle
+
+a = int(input('Anna ensimmäinen kateetti: '))
+b = int(input('Anna toinen kateetti: '))
+
+piirra_kolmio(a, b)
+```

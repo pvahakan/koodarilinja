@@ -35,3 +35,38 @@ import os
 os.system('clear') # Linux
 os.system('cls') # Windows
 ```
+
+Lopullinen ohjelman suoritus näyttää tältä:
+
+![kirjoitustesti.gif](./kirjoitusnopeustesti_osa_1.gif)
+
+# Tehtävä 2 - Oikeinkirjoitettujen sanojen määrä
+
+Tehtävänä on luoda funktio, joka laskee ja palauttaa oikein kirjoitettujen sanojen määrän. Funktio ottaa argumentikseen listan kirjoitettuja sanoja sekä listan, jossa ovat kaikki mahdolliset testissä olevat sanat.
+
+Oikeinkirjoitus tutkitaan siten, että käydään käyttäjän kirjoittamat sanat läpi. Mikäli käyttäjän kirjoittama sana löytyy alkuperäisestä sanalistasta, on käyttäjä kirjoittanut sanan oikein. Muussa tapauksessa sana on kirjoitettu väärin.
+
+Funktion tulee palauttaa oikeinkirjoitettujen sanojen määrä. Alla esimerkki testipääohjelmasta, jolla voit testata funktion toimintaa.
+
+```python
+kaikki_sanat = ['hei', 'moi', 'terve', 'kiitos']
+kirjoitetut_sanat = ['moi', 'tevre', 'kiitos', 'moi', 'hhei']
+
+oikeat_sanat = laske_oikeat_sanat(kaikki_sanat, kirjoitetut_sanat)
+print(oikeat_sanat) # Tämä tulostaa 3
+```
+
+Tässä täytyy tutkia, onko joku tietty alkio toisessa listassa vai ei. Eräs tapa on käyttää Pythonin ``in``-avainsanaa, joka toimii seuraavasti.
+
+```python
+lukulista = [1, 2, 3, 4, 5]
+numero = 3
+toinen_numero = 8
+
+print(numero in lukulista) # Tulostaa True
+print(toinen_numero in lukulista) # Tulostaa False
+
+# In-avainsanaa voidaan käyttää myös ehtolauseessa
+if numero in lukulista:
+    # Tee jotakin, jos numero löytyy listasta
+```

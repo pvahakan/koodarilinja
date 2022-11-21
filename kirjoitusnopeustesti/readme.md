@@ -90,3 +90,27 @@ kirjoitetut_sanat = ['moi', 'tevre', 'kiitos', 'moi', 'hhei']
 vaarat_sanat = laske_vaarat_sanat(kaikki_sanat, kirjoitetut_sanat)
 print(vaarat_sanat) # Tämä tulostaa 2
 ```
+
+# Tehtävä 4 - Raportin tulostaminen
+
+Luo funktio, joka tulostaa raportin kirjoitetuista sanoista. Tässä vaiheessa riittää, että raportissa tulostetaan oikeinkirjoitettujen ja väärinkirjoitettujen sanojen määrä.
+
+Funktio ottaa argumentikseen kaksi listaa. Toisessa listassa on käyttäjän kirjoittamat sanat ja toisessa kaikki mahdolliset sanat. Funktiossa lasketaan kuinka monta sanaa on kirjoitettu oikein ja kuinka monta väärin. Lisäksi funktiossa tulostetaan oikein ja väärin kirjoitettujen sanojen määrä kaikista sanoista. **HUOM! Hyödynnä tässä tehtävässä aiemmin tekemiäsi funktioita!**
+
+Alla esimerkki funktion toiminnasta.
+
+Pääohjelma:
+```python
+kaikki_sanat = ['hei', 'moi', 'terve', 'kiitos']
+kirjoitetut_sanat = ['moi', 'tevre', 'kiitos', 'moi', 'hhei']
+
+tulosta_raportti(kaikki_sanat, kirjoitetut_sanat)
+```
+
+Tulostus:
+```
+Kirjoitit oikein 3/5 sanaa
+Kirjoitit väärin 2/5 sanaa
+```
+
+**Varmista, että ohjelma toimii, jos sanalistoja muutetaan!**

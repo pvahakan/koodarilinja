@@ -118,3 +118,13 @@ os.system('cls') # Windows
 Lopullinen ohjelman suoritus näyttää tältä (sanalistassa sanat ['kello', 'polkupyörä', 'auto', 'mopo', 'lusikka']):
 
 ![kirjoitustesti.gif](./kirjoitusnopeustesti_osa_1.gif)
+
+# Tehtävä 5 - Raportin tulostaminen kirjoitettujen sanojen pohjalta
+
+Lisää edelliseen tehtävään toteutus, jossa tarkistetaan käyttäjän kirjoittamat sanat ja tulostetaan raportti niistä. Eli kun ohjelma suoritetaan, käyttäjälle syötetään haluttu määrä sanoja satunnaisesti ohjelmassa olevasta sanalistasta. Käyttäjä kirjoittaa sanat, jonka jälkeen ohjelma tutkii kuinka moni sana kirjoitettiin oikein ja kuinka moni väärin sekä tulostaa lopuksi raportin. Raportti näytetään niin kauan, kunnes käyttäjä painaa Enter. Tämän jälkeen näyttö tyhjennetään ja ohjelman suoritus päättyy.
+
+Tehtävän jälkeen ohjelman tulisi näyttää tältä:
+
+**LISÄÄ TÄHÄN GIF!**
+
+**Varmista, että ohjelma toimii, jos kirjoitettavien sanojen määrää tai ohjelmassa olevaa sanalistaa muutetaan!**

@@ -12,7 +12,12 @@ Tehtävän suorittamisen helpottamiseksi olen palastellut ongelmaa osiin tehtäv
 
 a) Luo lista, jossa on viisi sanaa. Voit keksiä sanat itse. Näitä sanoja käytetään, jotta ohjelman toiminta saadaan halutunlaiseksi. Sanat korvataan myöhemmin kattavammalla listalla.
 
-b) Luo muuttuja, joka sisältää tiedon kuinka monta sanaa käyttäjän pyydetään kirjoittaa. Käytä tässä while-looppia. Tulosta näytölle satunnaisesti joku listan sanoista. **Toteuta tämä sillä tavalla, että sanalistan kokoa voi muuttaa ja silti kaikilla sanoilla on mahdollisuus tulostua näytölle!** Tämän suoritettuasi sinulla pitäisi näkyä näytöllä allekkain viisi sanaa, jotka ovat satunnaisesti valittu a-kohdassa kirjoittamastasi sanalistasta. **Huom! Kyse on satunnaisluvuista, jolloin sama sana voi näkyä useamman kerran.**
+b) Luo muuttuja, joka sisältää tiedon kuinka monta sanaa käyttäjän pyydetään kirjoittamaan. Aseta aluksi muuttujan arvoksi 5. Tulosta näytölle satunnaisesti joku listan sanoista tässä tapauksessa viisi kertaa peräkkäin. Käytä toistorakenteena while-silmukkaa. **Toteuta tämä sillä tavalla, että sanalistan kokoa voi muuttaa ja silti kaikilla sanoilla on mahdollisuus tulostua näytölle!** Tämän suoritettuasi sinulla pitäisi näkyä näytöllä allekkain viisi sanaa, jotka ovat satunnaisesti valittu a-kohdassa kirjoittamastasi sanalistasta. **Huom! Kyse on satunnaisluvuista, jolloin sama sana voi näkyä useamman kerran, etenkin jos sanalista on pieni.**
+
+Varmista, että ohjelmassa toimii seuraavat asiat:
+
+- Sanalistan kokoa voi muuttaa ja kaikilla sanoilla on mahdollisuus päätyä tulostettavaksi.
+- Tulostettavien sanojen määrää voi muuttaa vaihtamalla ainoastaan muuttujan arvoa.
 
 Tarvitset seuraavia asioita tehtävässä:
 ```python
@@ -42,7 +47,9 @@ Lopullinen ohjelman suoritus näyttää tältä:
 
 # Tehtävä 2 - Oikeinkirjoitettujen sanojen määrä
 
-Tehtävänä on luoda funktio, joka laskee ja palauttaa oikein kirjoitettujen sanojen määrän. Funktio ottaa argumentikseen listan kirjoitettuja sanoja sekä listan, jossa ovat kaikki mahdolliset testissä olevat sanat.
+Tehtävänä on luoda funktio, joka laskee ja palauttaa oikein kirjoitettujen sanojen määrän. **HUOM! Vielä ei tarvitse sisällyttää tätä edellisen tehtävän toteutukseen, riittää, että luot funktion joka toimii alla kuvatulla tavalla.**
+
+Funktio ottaa argumentikseen kaksi listaa. Toisessa listassa on kirjoitetut sanat ja toisessa listassa kaikki mahdolliset testissä olevat sanat. **HUOM! Testivaiheessa voit kirjoittaa suoraan koodiin käyttäjän kirjoittamat sanat. Toteutus, jossa käyttäjä todella joutuu itse kirjoittamaan sanat lisätään myöhemmin.**
 
 Oikeinkirjoitus tutkitaan siten, että käydään käyttäjän kirjoittamat sanat läpi. Mikäli käyttäjän kirjoittama sana löytyy alkuperäisestä sanalistasta, on käyttäjä kirjoittanut sanan oikein. Muussa tapauksessa sana on kirjoitettu väärin.
 
@@ -69,4 +76,17 @@ print(toinen_numero in lukulista) # Tulostaa False
 # In-avainsanaa voidaan käyttää myös ehtolauseessa
 if numero in lukulista:
     # Tee jotakin, jos numero löytyy listasta
+```
+
+# Tehtävä 3 - Väärin kirjoitettujen sanojen määrä
+
+Luo funktio, joka laskee ja palauttaa väärin kirjoitettujen sanojen määrän. Funktio ottaa kaksi argumenttia, listan käyttäjän kirjoittamia sanoja sekä listan, jossa on kaikki mahdolliset sanat. Voit hyödyntää edellisen tehtävän tietoja tai käyttää hyväksi tietoa, että väärien sanojen määrä saadaan, kun kaikista sanoista vähennetään oikeat sanat.
+
+Alla esimerkki funktion toiminnasta:
+```python
+kaikki_sanat = ['hei', 'moi', 'terve', 'kiitos']
+kirjoitetut_sanat = ['moi', 'tevre', 'kiitos', 'moi', 'hhei']
+
+vaarat_sanat = laske_vaarat_sanat(kaikki_sanat, kirjoitetut_sanat)
+print(vaarat_sanat) # Tämä tulostaa 2
 ```

@@ -20,17 +20,17 @@ def tarkista_vaarat_sanat(sanalista, kirjoitetut_sanat):
 def tulosta_raportti(sanalista, kirjoitetut_sanat):
     oikein = tarkista_oikeat_sanat(sanalista, kirjoitetut_sanat)
     vaarin = tarkista_vaarat_sanat(sanalista, kirjoitetut_sanat)
-    # os.system('clear')
-    os.system('cls')
+    os.system('clear')
+    # os.system('cls')
     print(f'Kirjoitit oikein {oikein}/{len(kirjoitetut_sanat)} sanaa')
     print(f'Kirjoitit väärin {vaarin}/{len(kirjoitetut_sanat)} sanaa\n')
     input('Paina Enter jatkaaksesi')
-    # os.system('clear')
-    os.system('cls')
+    os.system('clear')
+    # os.system('cls')
 
 while True:
-    # os.system('clear')
-    os.system('cls')
+    os.system('clear')
+    # os.system('cls')
     print(sanat[random.randint(0, len(sanat)-1)])
     kirjoitetut_sanat.append(input('>> '))
     if len(kirjoitetut_sanat) >= sanojen_maara:

@@ -121,10 +121,10 @@ Lopullinen ohjelman suoritus näyttää tältä (sanalistassa sanat ['kello', 'p
 
 # Tehtävä 5 - Raportin tulostaminen kirjoitettujen sanojen pohjalta
 
-Lisää edelliseen tehtävään toteutus, jossa tarkistetaan käyttäjän kirjoittamat sanat ja tulostetaan raportti niistä. Eli kun ohjelma suoritetaan, käyttäjälle syötetään haluttu määrä sanoja satunnaisesti ohjelmassa olevasta sanalistasta. Käyttäjä kirjoittaa sanat, jonka jälkeen ohjelma tutkii kuinka moni sana kirjoitettiin oikein ja kuinka moni väärin sekä tulostaa lopuksi raportin. Raportti näytetään niin kauan, kunnes käyttäjä painaa Enter. Tämän jälkeen näyttö tyhjennetään ja ohjelman suoritus päättyy.
+Lisää edelliseen tehtävään toteutus, jossa tarkistetaan käyttäjän kirjoittamat sanat ja tulostetaan raportti niistä. Eli kun ohjelma suoritetaan, käyttäjälle syötetään haluttu määrä sanoja satunnaisesti ohjelmassa olevasta sanalistasta. Käyttäjä kirjoittaa sanat, jonka jälkeen ohjelma tutkii kuinka moni sana kirjoitettiin oikein ja kuinka moni väärin sekä tulostaa lopuksi raportin. Raportti näytetään niin kauan, kunnes käyttäjä painaa Enter. Tämän jälkeen näyttö tyhjennetään ja ohjelman suoritus päättyy. *Vihje: Odottamisen Enterin painamiseen asti voi toteuttaa helposti ``input``-komennon avulla.*
 
 Tehtävän jälkeen ohjelman tulisi näyttää tältä:
 
-**LISÄÄ TÄHÄN GIF!**
+![kirjoitustesti_2.gif](./kirjoitusnopeustesti_osa_2.gif)
 
 **Varmista, että ohjelma toimii, jos kirjoitettavien sanojen määrää tai ohjelmassa olevaa sanalistaa muutetaan!**

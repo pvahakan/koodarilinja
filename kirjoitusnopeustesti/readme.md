@@ -200,6 +200,8 @@ Muokkaa raportin tulostaminen siten, että raportin aluksi näkyy kirjoittamisee
 
 # Tehtävä 8 - Kirjoitusnopeuden laskeminen osa 1
 
+**Huom! Kun lasketaan kirjoitusnopeutta, väärin kirjoitetut sanat otetaan mukaan sellaisenaan.**
+
 Luo funktio, joka laskee kuinka monta merkkiä käyttäjä kirjoittaa minuutissa. Funktio ottaa argumentikseen listan käyttäjän kirjoittamia sanoja sekä kirjoitusajan sekunteina ja palauttaa kuinka monta merkkiä käyttäjä kirjoitti minuutissa.
 
 Funktion määrittely näyttää seuraavalta.

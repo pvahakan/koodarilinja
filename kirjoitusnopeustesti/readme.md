@@ -127,4 +127,73 @@ Tehtävän jälkeen ohjelman tulisi näyttää tältä:
 
 ![kirjoitustesti_2.gif](./kirjoitusnopeustesti_osa_2.gif)
 
-**Varmista, että ohjelma toimii, jos kirjoitettavien sanojen määrää tai ohjelmassa olevaa sanalistaa muutetaan!**
+# Tehtävä 6 - Laajennettu sanalista
+
+Varmista, että ohjelma toimii riippumatta annettuja sanoja sisältävän listan koosta sekä kirjoitettavien sanojen määrästä. 
+
+1. Vaihda kirjoitettavien sanojen määräksi 8.
+2. Vaihda ohjelmaasi alla oleva lista sanoja. Sanat (100 kpl) on generoitu satunnaisesti kotimaisten kielten keskuksen (Kotus) ylläpitämästä suomen kielen sanalistasta, joka sisältää yhteensä yli 90 000 sanaa.
+
+Kun suoritat ohjelman, pitäisi ohjelman esittää sinulle satunnaisesti 8 sanaa alla olevasta listasta. **Tarkista, että sanojen määrä täsmää myös raportissa!**
+
+```python
+sanat = ['sedatiivi', 'kesakkoinen', 'selviytyjä', 'hutera', 'siemaista', 
+        'korjuun', 'haihatella', 'kuvautua', 'alempi', 'nettotulo', 
+        'velvoitetyöllistettävä', 'karambola', 'liftari', 'kuukunanmuna', 
+        'ujostelu', 'messinkipuhallin', 'teollisuusmies', 'kielentarkistus', 
+        'niemi', 'määräily', 'seinäkirjoitus', 'hopeavalmiste', 'ylivirtaus', 
+        'tatti', 'matka', 'euroaika', 'rakennustyömaa', 'pelti', 
+        'klamydiatulehdus', 'pahoinvointi', 'esilämmittää', 'hourekuva', 
+        'lerpattaa', 'avorauhanen', 'kiinnityskirja', 'puheensorina', 
+        'kapealanteinen', 'aikamatkustus', 'peräpuoli', 'kivuta', 
+        'totuudellisesti', 'älymystö', 'maakulkuneuvo', 'urheilutoimitus', 
+        'jälkiäänitys', 'koskemattomuus', 'sementtitehdas', 'veritulppa', 
+        'sienikeitto', 'tasakylkinen', 'limanuljaska', 'senaikainen', 
+        'lumppupaperi', 'karkeasanainen', 'hätäännys', 'tuohi', 
+        'kirjeenvaihtajajäsen', 'purjosipuli', 'silmityksin', 'nostokurki', 
+        'standartti', 'kung-fu', 'ruokalaji', 'pilsneripullo', 'korpiniitty', 
+        'kaupita', 'pilotti', 'lankous', 'asetussanat', 'pitkäaikaispotilas', 
+        'sotasilla', 'vaihetyö', 'soolohyökkäys', 'karvalakki', 'uurnalehto', 
+        'lemmenkohtaus', 'kateellinen', 'lainsäännös', 'joutessa', 
+        'lämpöistuin', 'suurikaliiperinen', 'juutalaislähetys', 
+        'normaalipaino', 'karvata', 'rullalautailu', 'pro', 'yrityspankki', 
+        'varmenne', 'saasteongelma', 'karttaprojektio', 'immenkalvo', 'vieri', 
+        'yksisäikeinen', 'luovutus', 'postinjakaja', 'vältellä', 'maalaustekniikka', 
+        'riuskuus', 'kanootti', 'heraldiikka']
+```
+
+# Tehtävä 7 - Kirjoituksen keston mittaaminen
+
+a) Seuraavaksi mitataan, kuinka kauan kirjoittamisessa kestää. Tarvitset keston mittaamiseen pythonin ``time``-kirjastoa, ota se käyttöön komennolla ``import time``.
+
+Tietyn ajanhetken (ikään kuin kellonaika) voit määrittää seuraavasti:
+
+```python
+import time
+
+ajanhetki = time.time()
+```
+
+Logiikka ajan mittaamisessa menee seuraavasti:
+
+- Määritä kaksi eri ajanhetkeä, milloin kirjoittaminen alkaa ja milloin se päättyy.
+- Kirjoittamisen kesto saadaan loppuhetken ja alkuhetken erotuksena. Yllä olevalla tavalla toteutettuna kesto saadaan sekunteina.
+
+b) Lisää kirjoittamisen kesto raportin tulostukseen. Tätä varten sinun tulee muokata raportin tulostusfunktiota siten, että se ottaa kolmanneksi argumentikseen kirjoittamisen keston. Funktion määrittelyn tulisi näyttää tältä:
+
+```python
+def tulosta_raportti(sanalista, kirjoitetut_sanat, kesto):
+    # Oma toteutuksesi funktiolle tähän
+```
+
+**Pyöristä kesto kahden desimaalin tarkkuuteen!** Pyöristäminen voidaan tehdä ``round-komennolla``:
+
+```python
+pitka_desimaaliluku = 1.23456789
+pyoristetty_luku = round(pitka_desimaaliluku, 3)
+print(pyoristetty_luku) # Tulostaa luvun 1.23
+```
+
+Muokkaa raportin tulostaminen siten, että raportin aluksi näkyy kirjoittamiseen kulunut aika. Kahdeksan sanan testissä suorituksen pitäisi näyttää tehtävän jälkeen seuraavalta.
+
+![kirjoitustesti_3.gif](./kirjoitusnopeustesti_osa_3.gif)

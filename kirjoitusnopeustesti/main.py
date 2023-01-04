@@ -46,11 +46,12 @@ def tulosta_raportti(sanalista, kirjoitetut_sanat, kesto):
     cpm = laske_merkit_minuutissa(kirjoitetut_sanat, kesto)
     wpm = laske_sanat_minuutissa(kirjoitetut_sanat, kesto)
     os.system('clear')
-    print(f'Kirjoittamiseen kului aikaa {round(kesto)} sekuntia\n')
+    print(f'Kirjoittamiseen kului aikaa {round(kesto, 2)} sekuntia\n')
     print(f'Kirjoitit oikein {oikein}/{len(kirjoitetut_sanat)} sanaa')
     print(f'Kirjoitit väärin {vaarin}/{len(kirjoitetut_sanat)} sanaa\n')
     print(f'Kirjoitusnopeutesi on {round(cpm)} merkkiä/min eli {round(wpm)} sanaa/min\n')
-    input('Paina mitä tahansa lopettaaksesi')
+    input('Paina Enter lopettaaksesi')
+    os.system('clear')
 
 def laske_merkit_minuutissa(kirjoitetut_sanat, kesto):
     kesto = kesto / 60 # Muutetaan minuuteiksi
@@ -69,9 +70,19 @@ def laske_sanat_minuutissa(kirjoitetut_sanat, kesto):
     sanoja = round(merkkien_maara / 5)
     return sanoja / kesto
 
+## PÄÄOHJELMA
 
+os.system('clear')
+print('Tällä ohjelmalla voit testata kirjoitusnopeutesi.')
+print()
+print('Ohjelma arpoo sinulle satunnaisesti haluamasi määrän sanoja')
+print('jotka sinun tulee kirjoittaa ja hyväksyä Enterillä.')
+print()
+print('Testin jälkeen ohjelma tulostaa kirjoitusnopeutesi yksiköissä')
+print('merkkiä / min sekä sanaa / min. Yksi sana vastaa viittä (5) merkkiä.')
+print()
 
-sanojen_maara = 5
+sanojen_maara = int(input('Anna kirjoitettavien sanojen määrä: '))
 aloitusaika = time.time()
 
 while True:

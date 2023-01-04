@@ -259,3 +259,7 @@ Ohjelman suorituksen tulisi näyttää kahdeksan sanan testissä seuraavalta:
 # Tehtävä 11 - Viimeinen silaus
 
 Lisää kirjoitustestiin pieni käyttöliittymä, joka tulostaa infoa testistä ja kysyy kirjoitettavien sanojen määrän.
+
+Lopullisen ohjelman suoritus näyttää tältä:
+
+![kirjoitustesti_3.gif](./kirjoitusnopeustesti_osa_4.gif)

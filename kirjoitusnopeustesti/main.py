@@ -2,7 +2,31 @@ import random
 import time
 import os
 
-sanat = ['hei', 'moi', 'kyllä', 'ei', 'tervetuloa']
+# sanat = ['hei', 'moi', 'kyllä', 'ei', 'tervetuloa']
+sanat = ['sedatiivi', 'kesakkoinen', 'selviytyjä', 'hutera', 'siemaista', 
+        'korjuun', 'haihatella', 'kuvautua', 'alempi', 'nettotulo', 
+        'velvoitetyöllistettävä', 'karambola', 'liftari', 'kuukunanmuna', 
+        'ujostelu', 'messinkipuhallin', 'teollisuusmies', 'kielentarkistus', 
+        'niemi', 'määräily', 'seinäkirjoitus', 'hopeavalmiste', 'ylivirtaus', 
+        'tatti', 'matka', 'euroaika', 'rakennustyömaa', 'pelti', 
+        'klamydiatulehdus', 'pahoinvointi', 'esilämmittää', 'hourekuva', 
+        'lerpattaa', 'avorauhanen', 'kiinnityskirja', 'puheensorina', 
+        'kapealanteinen', 'aikamatkustus', 'peräpuoli', 'kivuta', 
+        'totuudellisesti', 'älymystö', 'maakulkuneuvo', 'urheilutoimitus', 
+        'jälkiäänitys', 'koskemattomuus', 'sementtitehdas', 'veritulppa', 
+        'sienikeitto', 'tasakylkinen', 'limanuljaska', 'senaikainen', 
+        'lumppupaperi', 'karkeasanainen', 'hätäännys', 'tuohi', 
+        'kirjeenvaihtajajäsen', 'purjosipuli', 'silmityksin', 'nostokurki', 
+        'standartti', 'kung-fu', 'ruokalaji', 'pilsneripullo', 'korpiniitty', 
+        'kaupita', 'pilotti', 'lankous', 'asetussanat', 'pitkäaikaispotilas', 
+        'sotasilla', 'vaihetyö', 'soolohyökkäys', 'karvalakki', 'uurnalehto', 
+        'lemmenkohtaus', 'kateellinen', 'lainsäännös', 'joutessa', 
+        'lämpöistuin', 'suurikaliiperinen', 'juutalaislähetys', 
+        'normaalipaino', 'karvata', 'rullalautailu', 'pro', 'yrityspankki', 
+        'varmenne', 'saasteongelma', 'karttaprojektio', 'immenkalvo', 'vieri', 
+        'yksisäikeinen', 'luovutus', 'postinjakaja', 'vältellä', 'maalaustekniikka', 
+        'riuskuus', 'kanootti', 'heraldiikka']
+
 kirjoitetut_sanat = []
 
 def tarkista_oikeat_sanat(sanalista, kirjoitetut_sanat):

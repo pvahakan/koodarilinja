@@ -197,3 +197,53 @@ print(pyoristetty_luku) # Tulostaa luvun 1.23
 Muokkaa raportin tulostaminen siten, että raportin aluksi näkyy kirjoittamiseen kulunut aika. Kahdeksan sanan testissä suorituksen pitäisi näyttää tehtävän jälkeen seuraavalta.
 
 ![kirjoitustesti_3.gif](./kirjoitusnopeustesti_osa_3.gif)
+
+# Tehtävä 8 - Kirjoitusnopeuden laskeminen osa 1
+
+Luo funktio, joka laskee kuinka monta merkkiä käyttäjä kirjoittaa minuutissa. Funktio ottaa argumentikseen listan käyttäjän kirjoittamia sanoja sekä kirjoitusajan sekunteina ja palauttaa kuinka monta merkkiä käyttäjä kirjoitti minuutissa.
+
+Funktion määrittely näyttää seuraavalta.
+
+```python
+def laske_merkit_minuutissa(kirjoitetut_sanat, kesto):
+    # Toteuta funktio tähän
+```
+
+Funktiossa tulee muuttaa sekunnit minuuteiksi sekä laskea kirjoitettujen sanojen merkit. Yksittäisen sanan merkit saat selville funktion ``len()`` avulla. Esimerkiksi
+
+```python
+print(len('unelmaduuni')) # tulostaisi 11
+```
+
+Sinun pitää siis käydä kaikki kirjoitetut sanat läpi ja tallentaa sanojen yhteispituus muuttujaan.
+
+Voit testata funktiota kommentoimalla vanhan pääohjelman pois ja lisäämällä pääohjelmaan seuraavan koodinpätkän. Jos tulostus seuraavalla koodilla on 55.0, funktio toimii todennäköisesti oikein.
+
+```python
+kirjoitetut_sanat = ['moi', 'hei', 'kyllä']
+kesto = 12 # sekunteja
+
+print(laske_merkit_minuutissa(kirjoitetut_sanat, kesto)) # Tulostaa 55.0
+```
+
+# Tehtävä 9 - Kirjoitusnopeuden laskeminen osa 2
+
+Luo toinen funktio, joka laskee sanojen määrän minuutissa. **Huom! Tässä sana tarkoittaa viiden merkin joukkoa!** Eli laskennassa jokaisessa sanassa on viisi merkkiä. Esimerkiksi sana "curlingmestaruus" sisältää yli 3 sanaa (16 merkkiä).
+
+Funktio ottaa argumentikseen listan kirjoitettuja sanoja sekä kirjoittamiseen kuluneen ajan sekunteina. Funktio palauttaa kirjoitettujen sanojen määrän minuutissa. Funktion määrittely näyttää seuraavalta:
+
+```python
+def laske_sanat_minuutissa(kirjoitetut_sanat, kesto):
+    # Toteutus tähän
+```
+
+Käytä hyväksesi edellisen tehtävän ratkaisua. Edelliseen tehtävään verrattuna tässä tehtävässä tulee selvittää, kuinka monta viiden merkin "sanaa" kirjoitetut sanat sisältävät. Voit pyöristää sanojen määrän lähimpään kokonaislukuun.
+
+Testaa funktiota seuraavalla ohjelmalla, jonka pitäisi tulostaa 10.0.
+
+```python
+kirjoitetut_sanat = ['moi', 'hei', 'kyllä']
+kesto = 12 # sekunteja
+
+print(laske_sanat_minuutissa(kirjoitetut_sanat, kesto)) # Tulostaa 10.0
+```

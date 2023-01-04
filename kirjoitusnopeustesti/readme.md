@@ -260,6 +260,18 @@ Ohjelman suorituksen tulisi näyttää kahdeksan sanan testissä seuraavalta:
 
 Lisää kirjoitustestiin pieni käyttöliittymä, joka tulostaa infoa testistä ja kysyy kirjoitettavien sanojen määrän.
 
+Info, jonka esimerkkiohjelma tulostaa on seuraava:
+
+```
+Tällä ohjelmalla voit testata kirjoitusnopeutesi.
+
+Ohjelma arpoo sinulle satunnaisesti haluamasi määrän sanoja
+jotka sinun tulee kirjoittaa ja hyväksyä Enterillä.
+
+Testin jälkeen ohjelma tulostaa kirjoitusnopeutesi yksiköissä
+merkkiä / min sekä sanaa / min. Yksi sana vastaa viittä (5) merkkiä.
+```
+
 Lopullisen ohjelman suoritus näyttää tältä:
 
-![kirjoitustesti_3.gif](./kirjoitusnopeustesti_osa_4.gif)
+![kirjoitustesti_5.gif](./kirjoitusnopeustesti_osa_5.gif)

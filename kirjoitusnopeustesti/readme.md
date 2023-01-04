@@ -186,12 +186,12 @@ def tulosta_raportti(sanalista, kirjoitetut_sanat, kesto):
     # Oma toteutuksesi funktiolle tähän
 ```
 
-**Pyöristä kesto kahden desimaalin tarkkuuteen!** Pyöristäminen voidaan tehdä ``round-komennolla``:
+**Pyöristä kesto kahden desimaalin tarkkuuteen!** Pyöristäminen voidaan tehdä ``round``-komennolla:
 
 ```python
 pitka_desimaaliluku = 1.23456789
 pyoristetty_luku = round(pitka_desimaaliluku, 3)
-print(pyoristetty_luku) # Tulostaa luvun 1.23
+print(pyoristetty_luku) # Tulostaa luvun 1.235
 ```
 
 Muokkaa raportin tulostaminen siten, että raportin aluksi näkyy kirjoittamiseen kulunut aika. Kahdeksan sanan testissä suorituksen pitäisi näyttää tehtävän jälkeen seuraavalta.
@@ -247,3 +247,15 @@ kesto = 12 # sekunteja
 
 print(laske_sanat_minuutissa(kirjoitetut_sanat, kesto)) # Tulostaa 10.0
 ```
+
+# Tehtävä 10 - Kirjoitusnopeuden laskeminen osa 3
+
+Muokkaa raportintulostusta siten, että tulostuksessa näkyy kirjoitettujen merkkien ja sanojen määrä minuutissa.
+
+Ohjelman suorituksen tulisi näyttää kahdeksan sanan testissä seuraavalta:
+
+![kirjoitustesti_3.gif](./kirjoitusnopeustesti_osa_4.gif)
+
+# Tehtävä 11 - Viimeinen silaus
+
+Lisää kirjoitustestiin pieni käyttöliittymä, joka tulostaa infoa testistä ja kysyy kirjoitettavien sanojen määrän.

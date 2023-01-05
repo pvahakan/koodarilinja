@@ -113,6 +113,45 @@ class Main:
         global run
         run = False
 
+class Peli:
+    """
+    Luokan tarkoitus on paketoida kaikki pygamen hankalalta näyttävät toiminnot
+    yksinkertaisempaan pakettiin.
+    """
+
+    def __init__(self, koko : int):
+        """
+        Parameters
+        ----------
+        koko : int
+            Pelilaudan sivun pituus ruutujen määrässä laskettuna. Pelilauta on neliö.
+        """
+
+        pygame.init()
+        self.solun_koko = 20
+        self.sivun_pituus = koko
+        nayton_sivu = self.solun_koko * self.sivun_pituus
+        self.naytto = pygame.display.set_mode((nayton_sivu, nayton_sivu))
+        self.kello = pygame.time.Clock()
+        self.sulje = pygame.QUIT
+        self.running = True
+
+    def piirra_kentta(self):
+        self.naytto.fill((175, 215, 70))
+
+    def hae_tapahtumat(self):
+        events = pygame.event.get()
+        return [event.type for event in events]
+
+    def paivita(self):
+        pygame.display.flip()
+        self.kello.tick(60)
+
+    def lopeta(self):
+        self.running = False
+        pygame.quit()
+
+
 # Alustetaan pelilauta
 pygame.init()
 solun_koko = 20

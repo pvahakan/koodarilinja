@@ -48,3 +48,18 @@
 #     kayttoliittyma.piirra_kentta()
 #     kayttoliittyma.piirra_snake()
 #     kayttoliittyma.piirra_ruoka()
+
+from grid_game import Peli
+
+peli = Peli(25)
+
+if __name__ == '__main__':
+    while peli.running:
+        for tapahtuma in peli.hae_tapahtumat():
+            if tapahtuma == peli.sulje:
+                peli.running = False
+
+        peli.piirra_kentta()
+        peli.paivita()
+
+    peli.lopeta()

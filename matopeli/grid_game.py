@@ -3,17 +3,46 @@ import random
 from pygame.math import Vector2
 
 class Snake:
+    """
+    Luokka, jota käytetään snaken toimintojen luomiseen.
+    """
+
     def __init__(self):
+        """
+        Parameters
+        ----------
+        body : list
+            Lista snaken palasten sijainneista. Sijainnit ovat tallennettu pygamen vector2-muodossa.
+        suunta : pygame.math.Vector2
+            Suunta, johon snake liikkuu. Oletuksena oikealle.
+        uusi_pala : bool
+            Muuttuja, jonka avulla selvitetään tarvitseeko snakelle luoda uusi pala vai ei.
+        """
+
         self.body = [Vector2(7, 10), Vector2(6, 10), Vector2(5, 10)]
         self.suunta = Vector2(1, 0)
         self.uusi_pala = False
 
     def piirra_snake(self):
+        """Piirtää snaken näytölle.
+
+        Piirtämisessä huomioidaan kentän solurakenne. Snake voi saada vain tietyt
+        paikat kentältä riippuen kentälle annetusta solun koosta, joka on globaali
+        muuttuja.
+        """
+
         for block in self.body:
             snake_rect = pygame.Rect(block.x * solun_koko, block.y * solun_koko, solun_koko, solun_koko)
             pygame.draw.rect(naytto, (183,111,122), snake_rect)
 
     def liikuta(self):
+        """Liikuttaa snakea haluttuun suuntaan.
+        
+        Luodaan kopio kaikista snaken palasista poislukien viimeinen. Kopion ensimmäiseksi
+        elementiksi lisätään ensimmäinen elementti, johon on lisätty snaken suunta.
+        Jos snakea täytyy kasvattaa, niin kopio luodaan kaikista aiemmista snaken palasista.
+        """
+
         if self.uusi_pala == True:
             body_copy = self.body
             body_copy.insert(0, body_copy[0] + self.suunta) # Lisätään alkuun uusi elementti
@@ -25,6 +54,10 @@ class Snake:
             self.body = body_copy
 
     def lisaa_pala(self):
+        """Funktio, jolla käsitellään palan lisäämisen tarve snakelle.
+
+        """
+
         self.uusi_pala = True
 
 

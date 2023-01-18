@@ -52,14 +52,17 @@
 from grid_game import Peli
 from grid_game import Snake
 from grid_game import Nappaimisto
+from grid_game import Ruoka
 
 import time
 
 peli = Peli(25) # Luodaan pelikenttä, 25x25 -ruutua. Ruudun koko määräytyy Peli-luokassa.
 mato = Snake()
+ruoka = Ruoka()
 nappaimisto = Nappaimisto()
 
 peli.lisaa_mato(mato) # Lisätään mato pelikentälle
+peli.lisaa_ruoka(ruoka) # Lisätään ruoka
 
 if __name__ == '__main__':
     while peli.running:

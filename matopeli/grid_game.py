@@ -175,18 +175,39 @@ class Peli:
         pygame.time.set_timer(self.paivitys, 150)
 
     def piirra_kentta(self):
-        """Piirtää kentän näytölle. Kentän koko annetaan Peli-luokan alustuksessa.
+        """Piirtää kentän näytölle. 
+        
+        Kentän koko annetaan Peli-luokan alustuksessa. Funktio huolehtii madon ja
+        ruuan piirtämisestä.
         """
 
         self.naytto.fill((175, 215, 70))
         if self.snake is not None:
             self.snake.piirra_snake()
+        if self.ruoka is not None:
+            self.ruoka.piirra_ruoka()
 
     def lisaa_mato(self, snake):
         """Lisää madon pelikentälle.
+
+        Parameters:
+        -----------
+        snake : Snake
+            Kentälle lisättävä Snake-objekti
         """
 
         self.snake = snake
+
+    def lisaa_ruoka(self, ruoka):
+        """Lisää ruuan pelikentälle
+
+        Parameters:
+        -----------
+        ruoka : Ruoka
+            Kentälle lisättävä Ruoka-objekti
+        """
+
+        self.ruoka = ruoka
 
     def hae_tapahtumat(self):
         """Hakee käyttäjän antamat reaktiot / syötteet PyGamen eventteinä.

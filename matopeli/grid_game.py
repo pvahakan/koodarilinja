@@ -23,6 +23,12 @@ class Snake:
         self.suunta = Vector2(1, 0)
         self.uusi_pala = False
 
+    def piirra(self, peli):
+        for block in self.body:
+            snake_rect = pygame.Rect(block.x * solun_koko, block.y * solun_koko, solun_koko, solun_koko)
+            pygame.draw.rect(peli.naytto, (183,111,122), snake_rect)
+
+
     def piirra_snake(self):
         """Piirtää snaken näytölle.
 
@@ -159,12 +165,24 @@ class Peli:
         self.kello = pygame.time.Clock()
         self.sulje = pygame.QUIT
         self.running = True
+        self.snake = None
+        self.ruoka = None
+        self.paivitys = pygame.USEREVENT # Tapahtuma, joka tarkistaa pitääkö näyttö päivittää vai ei
+        pygame.time.set_timer(self.paivitys, 150)
 
     def piirra_kentta(self):
         """Piirtää kentän näytölle. Kentän koko annetaan Peli-luokan alustuksessa.
         """
 
         self.naytto.fill((175, 215, 70))
+        if self.snake is not None:
+            self.snake.piirra_snake()
+
+    def lisaa_mato(self, snake):
+        """Lisää madon pelikentälle.
+        """
+
+        self.snake = snake
 
     def hae_tapahtumat(self):
         """Hakee käyttäjän antamat reaktiot / syötteet PyGamen eventteinä.
@@ -180,10 +198,21 @@ class Peli:
 
     def paivita(self):
         """Päivittää pelikentän.
+
+        Funktio huolehtii madon liikuttamisesta.
         """
+
+        if self.snake is not None:
+            self.snake.liikuta()
 
         pygame.display.flip()
         self.kello.tick(60)
+
+    def tarkista_pelin_jatkuminen(self):
+        if not 0 <= self.snake.body[0].x <= self.sivun_pituus - 1:
+            self.running = False
+        if not 0 <= self.snake.body[0].y <= self.sivun_pituus - 1:
+            self.running = False
 
     def lopeta(self):
         """Sulkee peli-ikkunan.

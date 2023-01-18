@@ -50,16 +50,25 @@
 #     kayttoliittyma.piirra_ruoka()
 
 from grid_game import Peli
+from grid_game import Snake
 
-peli = Peli(25)
+import time
+
+peli = Peli(25) # Luodaan pelikenttä, 25x25 -ruutua. Ruudun koko määräytyy Peli-luokassa.
+mato = Snake()
+
+peli.lisaa_mato(mato) # Lisätään mato pelikentälle
 
 if __name__ == '__main__':
     while peli.running:
         for tapahtuma in peli.hae_tapahtumat():
             if tapahtuma == peli.sulje:
                 peli.running = False
+            if tapahtuma == peli.paivitys:
+                peli.paivita() # Päivitysfunktiossa huolehditaan madon liikuttamisesta
+                peli.tarkista_pelin_jatkuminen()
 
         peli.piirra_kentta()
-        peli.paivita()
 
+    time.sleep(2)
     peli.lopeta()

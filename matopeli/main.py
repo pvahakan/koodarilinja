@@ -61,17 +61,28 @@ mato = Snake()
 ruoka = Ruoka()
 nappaimisto = Nappaimisto()
 
+syominen = False
+
 peli.lisaa_mato(mato) # Lisätään mato pelikentälle
 peli.lisaa_ruoka(ruoka) # Lisätään ruoka
 
 if __name__ == '__main__':
     while peli.running:
         for tapahtuma in peli.hae_tapahtumat():
+            # Pelin lopetuksen tarkistus
             if peli.tapahtuman_tyyppi(tapahtuma) == peli.sulje:
                 peli.running = False
+
             if peli.tapahtuman_tyyppi(tapahtuma) == peli.paivitys:
-                peli.paivita() # Päivitysfunktiossa huolehditaan madon liikuttamisesta
+                # Tähän lohkoon pitää laittaa kaikki päivittämiseen liittyvä, madon kasvattaminen, pistelasku yms.
+                peli.paivita() # Päivitysfunktiossa huolehditaan madon liikuttamisesta. Ts. mato liikkuu automaattisesti, pitää huolehtia vain sen suunnasta.
                 peli.tarkista_pelin_jatkuminen()
+                syominen = peli.ruoka_syoty()
+                if syominen == True:
+                    mato.lisaa_pala()
+                peli.piirra_kentta()
+
+            # Tapahtumankäsittely aka. pelaajan kontrollit
             if peli.tapahtuman_tyyppi(tapahtuma) == nappaimisto.nappain_alas:
                 if peli.hae_nappain(tapahtuma) == nappaimisto.alas:
                     if mato.suunta != mato.suunnat['ylös']:
@@ -86,7 +97,7 @@ if __name__ == '__main__':
                     if mato.suunta != mato.suunnat['vasen']:
                         mato.suunta = mato.suunnat['oikea']
 
-        peli.piirra_kentta()
+
 
     time.sleep(1)
     peli.lopeta()

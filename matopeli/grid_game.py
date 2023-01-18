@@ -284,6 +284,23 @@ class Peli:
             if block == self.snake.body[0]:
                 self.running = False
 
+    def ruoka_syoty(self):
+        """Tarkistaa osuuko mato ruokaan.
+
+        Funktio luo ruualle uuden sijainnin.
+
+        Returns:
+        --------
+        boolean
+            Palauttaa True, jos mato osuu ruokaan. False muuten.
+        """
+
+        if self.ruoka.paikka == self.snake.body[0]:
+            self.ruoka.uusi_sijainti()
+            return True
+
+        return False
+
     def lopeta(self):
         """Sulkee peli-ikkunan.
         """

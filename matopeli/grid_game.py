@@ -117,6 +117,30 @@ class Peli:
     """
     Luokan tarkoitus on paketoida kaikki pygamen hankalalta näyttävät toiminnot
     yksinkertaisempaan pakettiin.
+
+    Peli koostuu ruudukosta ja mato pystyy liikkumaan aina yhden ruudun kerrallaan.
+
+    ...
+
+    Attributes
+    ----------
+    solun_koko : int
+        Pelilaudan yhden ruudun koko pikseleinä.
+    sivun_pituus : int
+        Pelikentän sivun pituus ruutuina. Pelilauta on aina neliö.
+    nayton_sivu : int
+        Pelikentän sivun pituus pikseleinä.
+
+    Methods
+    -------
+    piirra_kentta()
+        Piirtää alustuksessa annetun kokoisen kentän näytölle.
+    hae_tapahtumat()
+        Hakee tapahtumat, jotka käyttäjä pelille antaa PyGamen eventtien avulla.
+    paivita()
+        Päivittää pelikentän.
+    lopeta()
+        Sulkee ikkunan.
     """
 
     def __init__(self, koko : int):
@@ -137,17 +161,34 @@ class Peli:
         self.running = True
 
     def piirra_kentta(self):
+        """Piirtää kentän näytölle. Kentän koko annetaan Peli-luokan alustuksessa.
+        """
+
         self.naytto.fill((175, 215, 70))
 
     def hae_tapahtumat(self):
+        """Hakee käyttäjän antamat reaktiot / syötteet PyGamen eventteinä.
+
+        Returns
+        -------
+        list
+            Lista tapahtuman tyypeistä PyGamen event.type -muodossa.
+        """
+
         events = pygame.event.get()
         return [event.type for event in events]
 
     def paivita(self):
+        """Päivittää pelikentän.
+        """
+
         pygame.display.flip()
         self.kello.tick(60)
 
     def lopeta(self):
+        """Sulkee peli-ikkunan.
+        """
+
         self.running = False
         pygame.quit()
 

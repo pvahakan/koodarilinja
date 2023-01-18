@@ -77,7 +77,7 @@ if __name__ == '__main__':
                 # Tähän lohkoon pitää laittaa kaikki päivittämiseen liittyvä, madon kasvattaminen, pistelasku yms.
                 peli.paivita() # Päivitysfunktiossa huolehditaan madon liikuttamisesta. Ts. mato liikkuu automaattisesti, pitää huolehtia vain sen suunnasta.
                 peli.tarkista_pelin_jatkuminen()
-                syominen = peli.ruoka_syoty()
+                syominen = peli.ruoka_syoty() # Uuden ruuan luonti voitaisiin siirtää pois tästä funktiosta
                 if syominen == True:
                     mato.lisaa_pala()
                 peli.piirra_kentta()

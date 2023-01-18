@@ -9,6 +9,11 @@ class Snake:
 
     def __init__(self, peli):
         """
+        Parameters:
+        -----------
+        peli : Peli
+            Peli-luokan objekti, johon mato kuuluu.
+
         Attributes
         ----------
         body : list
@@ -24,12 +29,6 @@ class Snake:
         self.suunnat = {'vasen' : Vector2(-1, 0), 'oikea' : Vector2(1, 0), 'ylös' : Vector2(0, -1), 'alas' : Vector2(0, 1)}
         self.suunta = self.suunnat['oikea']
         self.uusi_pala = False
-
-    def piirra(self, peli): # Tätä funktiota ei taideta käyttää missään
-        for block in self.body:
-            snake_rect = pygame.Rect(block.x * peli.solun_koko, block.y * peli.solun_koko, peli.solun_koko, peli.solun_koko)
-            pygame.draw.rect(peli.naytto, (183,111,122), snake_rect)
-
 
     def piirra_snake(self):
         """Piirtää snaken näytölle.

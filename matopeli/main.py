@@ -51,24 +51,39 @@
 
 from grid_game import Peli
 from grid_game import Snake
+from grid_game import Nappaimisto
 
 import time
 
 peli = Peli(25) # Luodaan pelikenttä, 25x25 -ruutua. Ruudun koko määräytyy Peli-luokassa.
 mato = Snake()
+nappaimisto = Nappaimisto()
 
 peli.lisaa_mato(mato) # Lisätään mato pelikentälle
 
 if __name__ == '__main__':
     while peli.running:
         for tapahtuma in peli.hae_tapahtumat():
-            if tapahtuma == peli.sulje:
+            if peli.tapahtuman_tyyppi(tapahtuma) == peli.sulje:
                 peli.running = False
-            if tapahtuma == peli.paivitys:
+            if peli.tapahtuman_tyyppi(tapahtuma) == peli.paivitys:
                 peli.paivita() # Päivitysfunktiossa huolehditaan madon liikuttamisesta
                 peli.tarkista_pelin_jatkuminen()
+            if peli.tapahtuman_tyyppi(tapahtuma) == nappaimisto.nappain_alas:
+                if peli.hae_nappain(tapahtuma) == nappaimisto.alas:
+                    if mato.suunta != mato.suunnat['ylös']:
+                        mato.suunta = mato.suunnat['alas']
+                if peli.hae_nappain(tapahtuma) == nappaimisto.ylos:
+                    if mato.suunta != mato.suunnat['alas']:
+                        mato.suunta = mato.suunnat['ylös']
+                if peli.hae_nappain(tapahtuma) == nappaimisto.vasen:
+                    if mato.suunta != mato.suunnat['oikea']:
+                        mato.suunta = mato.suunnat['vasen']
+                if peli.hae_nappain(tapahtuma) == nappaimisto.oikea:
+                    if mato.suunta != mato.suunnat['vasen']:
+                        mato.suunta = mato.suunnat['oikea']
 
         peli.piirra_kentta()
 
-    time.sleep(2)
+    time.sleep(1)
     peli.lopeta()

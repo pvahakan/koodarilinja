@@ -20,7 +20,8 @@ class Snake:
         """
 
         self.body = [Vector2(7, 10), Vector2(6, 10), Vector2(5, 10)]
-        self.suunta = Vector2(1, 0)
+        self.suunnat = {'vasen' : Vector2(-1, 0), 'oikea' : Vector2(1, 0), 'ylös' : Vector2(0, -1), 'alas' : Vector2(0, 1)}
+        self.suunta = self.suunnat['oikea']
         self.uusi_pala = False
 
     def piirra(self, peli):
@@ -82,11 +83,12 @@ class Ruoka:
         self.y = random.randint(0, solujen_maara - 1)
         self.paikka = Vector2(self.x, self.y)
 
-"""
-Yksinkertainen matopeli, logiikka toteutettu tutoriaalin https://www.youtube.com/watch?v=QFvqStqPCRU
-perusteella.
-"""
 class Main:
+    """
+    Yksinkertainen matopeli, logiikka toteutettu tutoriaalin https://www.youtube.com/watch?v=QFvqStqPCRU
+    perusteella.
+    """
+
     def __init__(self):
         self.snake = Snake()
         self.ruoka = Ruoka()
@@ -155,6 +157,8 @@ class Peli:
         ----------
         koko : int
             Pelilaudan sivun pituus ruutujen määrässä laskettuna. Pelilauta on neliö.
+        running : boolean
+            Muuttuja, joka pitää kirjaa onko peli käynnissä vai ei.
         """
 
         pygame.init()
@@ -190,11 +194,44 @@ class Peli:
         Returns
         -------
         list
-            Lista tapahtuman tyypeistä PyGamen event.type -muodossa.
+            Lista tapahtumista PyGamen event -muodossa.
         """
 
         events = pygame.event.get()
-        return [event.type for event in events]
+        return [event for event in events]
+
+    def tapahtuman_tyyppi(self, event):
+        """Hakee tapahtuman tyypin.
+
+        Parameters
+        ----------
+        event : kygame.event
+            Tapahtuma, jonka tyyppiä selvitetään.
+
+        Returns
+        -------
+        pygame.event.type
+            Selvitettävän tapahtuman tyyppi.
+        """
+
+        return event.type
+
+    def hae_nappain(self, tapahtuma):
+        """Hakee näppäinpainalluksen näppäimen.
+
+        Funktiossa oletetaan, että tapahtuma on tyyppiä pygame.KEYDOWN.
+
+        Parameters
+        ----------
+        tapahtuma : pygame.event
+
+        Returns
+        -------
+        pygame.event.key
+            Selvitettävän näppäinpainalluksen näppäin.
+        """
+
+        return tapahtuma.key
 
     def paivita(self):
         """Päivittää pelikentän.
@@ -209,10 +246,22 @@ class Peli:
         self.kello.tick(60)
 
     def tarkista_pelin_jatkuminen(self):
+        """Tarkistaa päättyykö peli vai jatkuuko se.
+
+        Funktio tutkii osuuko mato pelikentän reunoihin tai itseensä.
+        Funktio muuttaa instanssimuuttujan running tilan Falseksi.
+        """
+
+        # Osuminen seiniin
         if not 0 <= self.snake.body[0].x <= self.sivun_pituus - 1:
             self.running = False
         if not 0 <= self.snake.body[0].y <= self.sivun_pituus - 1:
             self.running = False
+        
+        # Osuminen matoon
+        for block in self.snake.body[1:]:
+            if block == self.snake.body[0]:
+                self.running = False
 
     def lopeta(self):
         """Sulkee peli-ikkunan.
@@ -221,6 +270,17 @@ class Peli:
         self.running = False
         pygame.quit()
 
+class Nappaimisto:
+    """Luokka näppäimistöpalautteen käsittelyyn.
+    """
+
+    def __init__(self):
+        self.vasen = pygame.K_LEFT
+        self.oikea = pygame.K_RIGHT
+        self.ylos = pygame.K_UP
+        self.alas = pygame.K_DOWN
+        self.nappain_alas = pygame.KEYDOWN
+        self.nappain_ylos = pygame.KEYDOWN
 
 # Alustetaan pelilauta
 pygame.init()

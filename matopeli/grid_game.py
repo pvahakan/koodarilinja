@@ -7,9 +7,9 @@ class Snake:
     Luokka, jota käytetään snaken toimintojen luomiseen.
     """
 
-    def __init__(self):
+    def __init__(self, peli):
         """
-        Parameters
+        Attributes
         ----------
         body : list
             Lista snaken palasten sijainneista. Sijainnit ovat tallennettu pygamen vector2-muodossa.
@@ -19,14 +19,15 @@ class Snake:
             Muuttuja, jonka avulla selvitetään tarvitseeko snakelle luoda uusi pala vai ei.
         """
 
+        self.peli = peli
         self.body = [Vector2(7, 10), Vector2(6, 10), Vector2(5, 10)]
         self.suunnat = {'vasen' : Vector2(-1, 0), 'oikea' : Vector2(1, 0), 'ylös' : Vector2(0, -1), 'alas' : Vector2(0, 1)}
         self.suunta = self.suunnat['oikea']
         self.uusi_pala = False
 
-    def piirra(self, peli):
+    def piirra(self, peli): # Tätä funktiota ei taideta käyttää missään
         for block in self.body:
-            snake_rect = pygame.Rect(block.x * solun_koko, block.y * solun_koko, solun_koko, solun_koko)
+            snake_rect = pygame.Rect(block.x * peli.solun_koko, block.y * peli.solun_koko, peli.solun_koko, peli.solun_koko)
             pygame.draw.rect(peli.naytto, (183,111,122), snake_rect)
 
 
@@ -39,8 +40,8 @@ class Snake:
         """
 
         for block in self.body:
-            snake_rect = pygame.Rect(block.x * solun_koko, block.y * solun_koko, solun_koko, solun_koko)
-            pygame.draw.rect(naytto, (183,111,122), snake_rect)
+            snake_rect = pygame.Rect(block.x * self.peli.solun_koko, block.y * self.peli.solun_koko, self.peli.solun_koko, self.peli.solun_koko)
+            pygame.draw.rect(self.peli.naytto, (183,111,122), snake_rect)
 
     def liikuta(self):
         """Liikuttaa snakea haluttuun suuntaan.
@@ -69,56 +70,21 @@ class Snake:
 
 
 class Ruoka:
-    def __init__(self):
-        self.x = random.randint(0, solujen_maara - 1)
-        self.y = random.randint(0, solujen_maara - 1)
+    def __init__(self, peli):
+        self.peli = peli
+        self.x = random.randint(0, self.peli.sivun_pituus - 1)
+        self.y = random.randint(0, self.peli.sivun_pituus - 1)
         self.paikka = Vector2(self.x, self.y)
 
     def piirra_ruoka(self):
-        ruoka_rect = pygame.Rect(self.paikka.x*solun_koko, self.paikka.y*solun_koko, solun_koko, solun_koko)
-        pygame.draw.rect(naytto, (126, 166, 124), ruoka_rect)
+        ruoka_rect = pygame.Rect(self.paikka.x*self.peli.solun_koko, self.paikka.y*self.peli.solun_koko, self.peli.solun_koko, self.peli.solun_koko)
+        pygame.draw.rect(self.peli.naytto, (126, 166, 124), ruoka_rect)
 
     def uusi_sijainti(self):
-        self.x = random.randint(0, solujen_maara - 1)
-        self.y = random.randint(0, solujen_maara - 1)
+        self.x = random.randint(0, self.peli.sivun_pituus - 1)
+        self.y = random.randint(0, self.peli.sivun_pituus - 1)
         self.paikka = Vector2(self.x, self.y)
 
-class Main:
-    """
-    Yksinkertainen matopeli, logiikka toteutettu tutoriaalin https://www.youtube.com/watch?v=QFvqStqPCRU
-    perusteella.
-    """
-
-    def __init__(self):
-        self.snake = Snake()
-        self.ruoka = Ruoka()
-    
-    def paivita(self):
-        self.snake.liikuta()
-        self.tarkista_osuma()
-        self.tarkista_pelin_jatkuminen()
-
-    def piirra_objektit(self):
-        self.ruoka.piirra_ruoka()
-        self.snake.piirra_snake()
-
-    def tarkista_osuma(self):
-        if self.ruoka.paikka == self.snake.body[0]:
-            self.ruoka.uusi_sijainti()
-            self.snake.lisaa_pala()
-
-    def tarkista_pelin_jatkuminen(self):
-        if not 0 <= self.snake.body[0].x <= solujen_maara - 1:
-            self.game_over()
-        if not 0 <= self.snake.body[0].y <= solujen_maara - 1:
-            self.game_over()
-
-        for block in self.snake.body[1:]:
-            if block == self.snake.body[0]:
-                self.game_over()
-
-    def game_over(self):
-        global run
         run = False
 
 class Peli:
@@ -320,20 +286,19 @@ class Nappaimisto:
         self.nappain_alas = pygame.KEYDOWN
         self.nappain_ylos = pygame.KEYDOWN
 
-# Alustetaan pelilauta
-pygame.init()
-solun_koko = 20
-solujen_maara = 20
-naytto = pygame.display.set_mode((solun_koko * solujen_maara, solun_koko * solujen_maara))
-kello = pygame.time.Clock()
-
-peli = Main()
-run = True
-
-SCREEN_UPDATE = pygame.USEREVENT
-pygame.time.set_timer(SCREEN_UPDATE, 150)
-
 if __name__ == '__main__':
+    # Alustetaan pelilauta
+    pygame.init()
+    solun_koko = 20
+    solujen_maara = 20
+    naytto = pygame.display.set_mode((solun_koko * solujen_maara, solun_koko * solujen_maara))
+    kello = pygame.time.Clock()
+
+    peli = Main()
+    run = True
+
+    SCREEN_UPDATE = pygame.USEREVENT
+    pygame.time.set_timer(SCREEN_UPDATE, 150)
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

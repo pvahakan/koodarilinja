@@ -57,8 +57,8 @@ from grid_game import Ruoka
 import time
 
 peli = Peli(25) # Luodaan pelikenttä, 25x25 -ruutua. Ruudun koko määräytyy Peli-luokassa.
-mato = Snake()
-ruoka = Ruoka()
+mato = Snake(peli)
+ruoka = Ruoka(peli)
 nappaimisto = Nappaimisto()
 
 syominen = False

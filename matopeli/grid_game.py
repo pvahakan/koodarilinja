@@ -292,6 +292,25 @@ class Peli:
 
 class Nappaimisto:
     """Luokka näppäimistöpalautteen käsittelyyn.
+
+    ...
+
+    Attributes
+    ----------
+    vasen : pygame.key
+        Pygamen key constant vasemmalle nuolelle
+    oikea : pygame.key
+        Pygamen key constant oikealle nuolelle
+    ylos : pygame.key
+        Pygamen key constant ylänuolelle
+    alas : pygame.key
+        Pygamen key constant alanuolelle
+    nappain_alas : pygame.KEYDOWN
+        Pygamen vakio, jolla tutkitaan onko tapahtuma näppäimen alaspainallus.
+    nappain_ylos : pygame.KEYUP
+        Pygamen vakio, jolla tutkitaan onko tapahtuma näppäimen ylöspainallus.
+    
+
     """
 
     def __init__(self):

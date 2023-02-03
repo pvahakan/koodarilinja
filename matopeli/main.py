@@ -63,8 +63,9 @@ nappaimisto = Nappaimisto()
 
 syominen = False
 
-peli.lisaa_mato(mato) # Lisätään mato pelikentälle
-peli.lisaa_ruoka(ruoka) # Lisätään ruoka
+# Hoidetaan nämä luokkien mato ja ruoka konstruktoreissa
+# peli.lisaa_mato(mato) # Lisätään mato pelikentälle
+# peli.lisaa_ruoka(ruoka) # Lisätään ruoka
 
 if __name__ == '__main__':
     while peli.running:
@@ -80,6 +81,7 @@ if __name__ == '__main__':
                 syominen = peli.ruoka_syoty() # Uuden ruuan luonti voitaisiin siirtää pois tästä funktiosta
                 if syominen == True:
                     mato.lisaa_pala()
+                    mato.lisaa_piste()
                 peli.piirra_kentta()
 
             # Tapahtumankäsittely aka. pelaajan kontrollit

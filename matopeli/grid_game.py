@@ -29,6 +29,21 @@ class Snake:
         self.suunnat = {'vasen' : Vector2(-1, 0), 'oikea' : Vector2(1, 0), 'ylös' : Vector2(0, -1), 'alas' : Vector2(0, 1)}
         self.suunta = self.suunnat['oikea']
         self.uusi_pala = False
+        self.pisteet = 0
+        self.peli.lisaa_mato(self)
+
+    def lisaa_piste(self):
+        """Lisää madolle yhden pisteen.
+        """
+
+        self.pisteet += 1
+
+    def nayta_pisteet(self):
+        """Piirtää madon pistemäärän näytölle.
+        """
+
+        font = pygame.font.SysFont("Times New Roman", 18)       
+        self.peli.naytto.blit(font.render(str(self.pisteet), True, 'black'), (10, 10))
 
     def piirra_snake(self):
         """Piirtää snaken näytölle.
@@ -74,6 +89,7 @@ class Ruoka:
         self.x = random.randint(0, self.peli.sivun_pituus - 1)
         self.y = random.randint(0, self.peli.sivun_pituus - 1)
         self.paikka = Vector2(self.x, self.y)
+        self.peli.lisaa_ruoka(self)
 
     def piirra_ruoka(self):
         ruoka_rect = pygame.Rect(self.paikka.x*self.peli.solun_koko, self.paikka.y*self.peli.solun_koko, self.peli.solun_koko, self.peli.solun_koko)
@@ -142,13 +158,14 @@ class Peli:
     def piirra_kentta(self):
         """Piirtää kentän näytölle. 
         
-        Kentän koko annetaan Peli-luokan alustuksessa. Funktio huolehtii madon ja
+        Kentän koko annetaan Peli-luokan alustuksessa. Funktio huolehtii madon, pistemäärän ja
         ruuan piirtämisestä.
         """
 
         self.naytto.fill((175, 215, 70))
         if self.snake is not None:
             self.snake.piirra_snake()
+            self.snake.nayta_pisteet()
         if self.ruoka is not None:
             self.ruoka.piirra_ruoka()
 

@@ -15,6 +15,8 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 # Create your objects here.
 ev3 = EV3Brick()
 
+ev3.speaker.beep()
+
 # Alustetaan moottorit
 vasen_moottori = Motor(Port.D)
 oikea_moottori = Motor(Port.A)
